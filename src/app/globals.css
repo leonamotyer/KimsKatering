@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #fefcf8;
+  --foreground: #3c2e1f;
+  --muted-cream: #fefcf8;
+  --muted-warm: #faf7f2;
+  --muted-soft: #f5f2ed;
+  --muted-light: #f0ede6;
+  --muted-medium: #e8e2d8;
+  --muted-accent: #ddd4c4;
+  --muted-subtle: #d1c7b5;
+  --muted-text: #8b7d6b;
+  --muted-dark: #6b5d4f;
+  
+  /* Soft Golden Brown Baguette Colors - Muted & Lighter */
+  --baguette-primary: #c4a882;
+  --baguette-light: #e2d4b8;
+  --baguette-medium: #b89a6f;
+  --baguette-dark: #9d7f5a;
+  --baguette-muted: #a8906f;
+  --baguette-subtle: #f0e8d8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-baguette-primary: var(--baguette-primary);
+  --color-baguette-light: var(--baguette-light);
+  --color-baguette-medium: var(--baguette-medium);
+  --color-baguette-dark: var(--baguette-dark);
+  --color-baguette-muted: var(--baguette-muted);
+  --color-baguette-subtle: var(--baguette-subtle);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid var(--gray-400);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--gray-200);
+  color: var(--gray-900);
+}
+
+/* Flaticon CSS fixes */
+.fi {
+  font-style: normal !important;
+  font-variant: normal !important;
+  text-rendering: auto !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  display: inline-block !important;
+  font-family: "Flaticon" !important;
+  font-size: inherit !important;
+  line-height: 1 !important;
+}
+
+/* Ensure Flaticon fonts load properly */
+@font-face {
+  font-family: "Flaticon";
+  src: url("https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/fonts/flaticon.woff2") format("woff2"),
+       url("https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/fonts/flaticon.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
