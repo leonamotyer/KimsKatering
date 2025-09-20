@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kim's Catering - Premium Catering Services",
-  description: "Professional catering services for weddings, corporate events, and special occasions. Fresh, delicious food made with love.",
+  title: "Kim's katering - Premium katering Services",
+  description: "Professional katering services for weddings, corporate events, and special occasions. Fresh, delicious food made with love.",
 };
 
 export default function RootLayout({

@@ -28,7 +28,7 @@ const Header = () => {
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo.png"
-                alt="Kim's Catering Logo"
+                alt="Kim's katering Logo"
                 width={50}
                 height={50}
                 className="h-12 w-auto"

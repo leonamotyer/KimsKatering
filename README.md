@@ -1,10 +1,10 @@
-# Kim's Catering Website
+# Kim's katering Website
 
-A beautiful, responsive website for Kim's Catering - a local bakery and catering service in Strathmore, Alberta. Built with Next.js 15, TypeScript, and Tailwind CSS.
+A beautiful, responsive website for Kim's katering - a local bakery and katering service in Strathmore, Alberta. Built with Next.js 15, TypeScript, and Tailwind CSS.
 
-## 🍰 About Kim's Catering
+## 🍰 About Kim's katering
 
-Kim's Catering has been serving the Strathmore community for over 9 years, specializing in homemade pies, fresh-baked buns, delicate butter horns, and custom cakes made with real cream and premium Callebaut chocolate. Located at Bay #1 - 70 Slater Rd, Strathmore, Alberta.
+Kim's katering has been serving the Strathmore community for over 9 years, specializing in homemade pies, fresh-baked buns, delicate butter horns, and custom cakes made with real cream and premium Callebaut chocolate. Located at Bay #1 - 70 Slater Rd, Strathmore, Alberta.
 
 ## ✨ Features
 
@@ -159,7 +159,7 @@ This Next.js app can be deployed to any platform that supports Node.js:
 
 ## 📄 License
 
-This project is private and proprietary to Kim's Catering.
+This project is private and proprietary to Kim's katering.
 
 ## 🙏 Acknowledgments
 
@@ -170,4 +170,4 @@ This project is private and proprietary to Kim's Catering.
 
 ---
 
-**Kim's Catering** - Where love is baked into every bite! 🥖✨# KimsKatering
+**Kim's katering** - Where love is baked into every bite! 🥖✨# KimsKatering

@@ -467,18 +467,18 @@
       ]
     },
     {
-      "id": "catering-menus",
-      "name": "Catering Menus",
+      "id": "katering-menus",
+      "name": "katering Menus",
       "description": "Complete meal solutions for your special events",
       "items": [
         {
           "name": "Wedding Menus",
-          "description": "Complete wedding catering packages",
+          "description": "Complete wedding katering packages",
           "price": "Contact for pricing"
         },
         {
           "name": "Corporate Lunches",
-          "description": "Professional catering for business events",
+          "description": "Professional katering for business events",
           "price": "Contact for pricing"
         },
         {
@@ -488,7 +488,7 @@
         },
         {
           "name": "Funeral Services",
-          "description": "Respectful catering for funeral and celebration of life services",
+          "description": "Respectful katering for funeral and celebration of life services",
           "price": "Contact for pricing"
         }
       ]
@@ -506,12 +506,12 @@
         {
           "name": "Menu Customization",
           "description": "Custom menu planning tailored to your needs",
-          "price": "Included with catering"
+          "price": "Included with katering"
         },
         {
           "name": "Special Dietary Needs",
           "description": "Accommodations for allergies and dietary restrictions",
-          "price": "Included with catering"
+          "price": "Included with katering"
         },
         {
           "name": "Event Coordination",
