@@ -1,4 +1,4 @@
-import menuData from "../../data/menu.json";
+import menuData from "../data/menu.json";
 import VictorianBorder from "../componenets/victorian-animation";
 
 export default function Menu() {
@@ -21,7 +21,7 @@ export default function Menu() {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-20">
-            {menuData.menuCategories.map((category, categoryIndex) => (
+            {menuData.menuCategories.map((category) => (
               <div key={category.id} className="group">
                 <div className="flex items-center space-x-4 mb-8">
                   <div className="w-8 h-8 flex items-center justify-center group-hover:scale-110 transition-transform">

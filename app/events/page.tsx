@@ -1,4 +1,4 @@
-import eventsData from "../../data/events.json";
+import eventsData from "../data/events.json";
 import VictorianBorder from "../componenets/victorian-animation";
 
 export default function Events() {
