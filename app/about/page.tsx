@@ -1,5 +1,5 @@
 import Image from "next/image";
-import VictorianBorder from "../../componenets/victorian-animation";
+import VictorianBorder from "../componenets/victorian-animation";
 
 export default function About() {
   return (

@@ -1,5 +1,5 @@
 import menuData from "../../data/menu.json";
-import VictorianBorder from "../../componenets/victorian-animation";
+import VictorianBorder from "../componenets/victorian-animation";
 
 export default function Menu() {
   return (

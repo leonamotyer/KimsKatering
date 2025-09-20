@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import VictorianBorder from "../../componenets/victorian-animation";
+import VictorianBorder from "../componenets/victorian-animation";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
