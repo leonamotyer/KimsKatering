@@ -8,7 +8,7 @@ export default function About() {
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-[var(--baguette-dark)] mb-6">
-            About Kim's Catering
+            About Kim&apos;s Catering
           </h1>
           <p className="text-xl text-[var(--baguette-muted)] max-w-2xl mx-auto">
             Your friendly neighborhood bakery and catering service in Strathmore, Alberta
@@ -46,8 +46,8 @@ export default function About() {
               <p className="text-lg text-[var(--baguette-muted)] leading-relaxed">
                 Every morning, Kim rolls up her sleeves and creates the most scrumptious 
                 homemade pies, fresh-baked buns, delicate butter horns, and dreamy cakes 
-                using real cream and premium Callebaut chocolate. It's not just food – 
-                it's love baked into every bite.
+                using real cream and premium Callebaut chocolate. It&apos;s not just food – 
+                it&apos;s love baked into every bite.
               </p>
             </div>
           </div>
@@ -62,7 +62,7 @@ export default function About() {
               Events We Love to Cater
             </h2>
             <p className="text-lg text-[var(--baguette-muted)]">
-              From intimate gatherings to grand celebrations, we're honored to be part of your special moments
+              From intimate gatherings to grand celebrations, we&apos;re honored to be part of your special moments
             </p>
           </div>
 
@@ -134,7 +134,7 @@ export default function About() {
       <section className="py-16 bg-[var(--baguette-subtle)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-[var(--baguette-dark)] mb-4">
-            Let's Plan Your Special Event
+            Let&apos;s Plan Your Special Event
           </h2>
           <p className="text-lg text-[var(--baguette-muted)] mb-8">
             Kim loves sitting down with you to plan your special day, making sure every detail is just perfect for your guests.

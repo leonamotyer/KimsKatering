@@ -111,7 +111,7 @@ export default function Contact() {
               >
                 kim@kimskatering.ca
               </a>
-              <p className="text-sm text-[var(--baguette-muted)]">We'll respond within 24 hours</p>
+              <p className="text-sm text-[var(--baguette-muted)]">We&apos;ll respond within 24 hours</p>
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default function Contact() {
               Request a Quote
             </h2>
             <p className="text-[var(--baguette-muted)]">
-              Tell us about your event and we'll create a custom catering plan just for you.
+              Tell us about your event and we&apos;ll create a custom catering plan just for you.
             </p>
           </div>
 
@@ -137,7 +137,7 @@ export default function Contact() {
                 </svg>
               </div>
               <h3 className="text-xl font-medium text-[var(--baguette-dark)] mb-2">Thank You!</h3>
-              <p className="text-[var(--baguette-muted)]">We've received your message and will get back to you soon.</p>
+              <p className="text-[var(--baguette-muted)]">We&apos;ve received your message and will get back to you soon.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">

@@ -21,7 +21,7 @@ export default function Events() {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-16">
-            {eventsData.events.map((event, index) => (
+            {eventsData.events.map((event) => (
               <div key={event.id} className="group">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-4">
@@ -58,12 +58,6 @@ export default function Events() {
                     </div>
                   )}
                   
-                  {event.specialOffers && (
-                    <div className="mb-4">
-                      <p className="text-sm text-[var(--baguette-muted)] font-medium mb-1">Special Offers</p>
-                      <p className="text-sm text-[var(--baguette-muted)]">{event.specialOffers}</p>
-                    </div>
-                  )}
                   
                   {event.specialPricing && (
                     <div className="mb-4">

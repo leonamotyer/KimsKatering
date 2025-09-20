@@ -21,7 +21,7 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white">
             <h1 className="text-6xl md:text-8xl font-bold mb-6">
-              Kim's Catering
+              Kim&apos;s Catering
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
               Professional catering services for your special events
@@ -84,21 +84,21 @@ export default function Home() {
       {/* About Section */}
       <section className="py-20 bg-[var(--baguette-subtle)]">
         <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-4xl font-bold text-[var(--baguette-dark)] mb-8">About Kim's Catering</h2>
+          <h2 className="text-4xl font-bold text-[var(--baguette-dark)] mb-8">About Kim&apos;s Catering</h2>
           <p className="text-lg text-[var(--baguette-muted)] leading-relaxed mb-8">
-            Welcome to Kim's Catering, your friendly neighborhood bakery and catering service! For the past 9 years, 
+            Welcome to Kim&apos;s Catering, your friendly neighborhood bakery and catering service! For the past 9 years, 
             Kim has been baking up love and delicious memories right here in Strathmore, Alberta at Bay #1 - 70 Slater Rd. 
             What started as a passion for homemade goodness has grown into a beloved local business that brings families together.
           </p>
           <p className="text-lg text-[var(--baguette-muted)] leading-relaxed mb-8">
             From intimate birthday celebrations to grand wedding receptions, Kim and her warm-hearted team have been 
-            honored to be part of your most precious moments. Whether it's a cozy family reunion, a joyful fundraiser, 
+            honored to be part of your most precious moments. Whether it&apos;s a cozy family reunion, a joyful fundraiser, 
             or a special home party, we believe every gathering deserves the comfort and joy that only homemade treats can bring.
           </p>
           <p className="text-lg text-[var(--baguette-muted)] leading-relaxed mb-8">
             Our kitchen is where magic happens! Every morning, Kim rolls up her sleeves and creates the most scrumptious 
             homemade pies, fresh-baked buns, delicate butter horns, and dreamy cakes using real cream and premium 
-            Callebaut chocolate. It's not just food – it's love baked into every bite. Kim loves sitting down with you 
+            Callebaut chocolate. It&apos;s not just food – it&apos;s love baked into every bite. Kim loves sitting down with you 
             to plan your special day, making sure every detail is just perfect for your guests.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
