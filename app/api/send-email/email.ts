@@ -1,11 +1,11 @@
 // Email configuration and templates for Kim's Catering
 export const EMAIL_CONFIG = {
   // Sender information
-  fromEmail: 'onboarding@resend.dev', // Resend's verified domain
-  fromName: 'Kim\'s Catering',
+  fromEmail: process.env.FROM_EMAIL || 'onboarding@resend.dev', // Resend's verified domain
+  fromName: process.env.FROM_NAME || 'Kim\'s Catering',
   
   // Recipients
-  kimEmail: 'rlmotyer@gmail.com',
+  kimEmail: process.env.CONTACT_DEFAULT_TO || 'rlmotyer@gmail.com',
   
   // Brand colors (matching your website exactly)
   primaryColor: '#8b5d3b', // Main brown from website
@@ -34,6 +34,7 @@ export const EMAIL_TEMPLATES = {
     eventType?: string;
     eventDate?: string;
     guestCount?: string;
+    dietaryRestrictions?: string;
     message: string;
     hasMenuSelections: boolean;
     selectedItems?: Array<{itemName: string, categoryName: string, itemPrice: string}>;
@@ -98,7 +99,7 @@ export const EMAIL_TEMPLATES = {
           </div>
 
           <!-- Event Details -->
-          ${(data.eventType || data.eventDate || data.guestCount) ? `
+          ${(data.eventType || data.eventDate || data.guestCount || data.dietaryRestrictions) ? `
           <div style="background-color: ${EMAIL_CONFIG.secondaryColor}; padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 1px solid ${EMAIL_CONFIG.lightColor}; position: relative;">
             <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, ${EMAIL_CONFIG.accentColor}, ${EMAIL_CONFIG.lightColor}); border-radius: 12px 0 0 12px;"></div>
             <h3 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 20px 0; font-size: 22px; font-weight: 600; font-family: 'Playfair Display', serif;">
@@ -124,11 +125,20 @@ export const EMAIL_TEMPLATES = {
               </div>
               ` : ''}
               ${data.guestCount ? `
-              <div style="display: flex; align-items: center; padding: 12px 0;">
+              <div style="display: flex; align-items: center; padding: 12px 0; ${data.dietaryRestrictions ? 'border-bottom: 1px solid ' + EMAIL_CONFIG.lightColor + ';' : ''}">
                 <div style="width: 8px; height: 8px; background-color: ${EMAIL_CONFIG.accentColor}; border-radius: 50%; margin-right: 15px;"></div>
                 <div style="flex: 1;">
                   <span style="font-weight: 600; color: ${EMAIL_CONFIG.darkColor}; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Guest Count</span>
                   <div style="color: ${EMAIL_CONFIG.mutedColor}; font-size: 16px; margin-top: 2px;">${data.guestCount} people</div>
+                </div>
+              </div>
+              ` : ''}
+              ${data.dietaryRestrictions ? `
+              <div style="display: flex; align-items: flex-start; padding: 12px 0;">
+                <div style="width: 8px; height: 8px; background-color: ${EMAIL_CONFIG.accentColor}; border-radius: 50%; margin-right: 15px; margin-top: 4px;"></div>
+                <div style="flex: 1;">
+                  <span style="font-weight: 600; color: ${EMAIL_CONFIG.darkColor}; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Dietary Restrictions & Allergies</span>
+                  <div style="color: ${EMAIL_CONFIG.mutedColor}; font-size: 16px; margin-top: 2px; white-space: pre-wrap;">${data.dietaryRestrictions}</div>
                 </div>
               </div>
               ` : ''}

@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     console.log('📝 Request body received:', JSON.stringify(body, null, 2));
     
-    const { name, email, phone, eventType, eventDate, guestCount, message, hasMenuSelections, selectedItems: requestSelectedItems } = body;
+    const { name, email, phone, eventType, eventDate, guestCount, dietaryRestrictions, message, hasMenuSelections, selectedItems: requestSelectedItems } = body;
     
     // Use selected items from request body, or parse from message as fallback
     let selectedItems: Array<{itemName: string, categoryName: string, itemPrice: string}> = [];
@@ -70,6 +70,7 @@ export async function POST(request: NextRequest) {
         eventType,
         eventDate,
         guestCount,
+        dietaryRestrictions,
         message,
         hasMenuSelections,
         selectedItems

@@ -21,6 +21,7 @@ function CustomQuoteForm() {
     eventType: '',
     eventDate: '',
     guestCount: '',
+    dietaryRestrictions: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,9 +61,16 @@ function CustomQuoteForm() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    
+    // Auto-capitalize name field
+    let processedValue = value;
+    if (name === 'name') {
+      processedValue = value.replace(/\b\w/g, (char) => char.toUpperCase());
+    }
+    
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: processedValue
     }));
   };
 
@@ -104,6 +112,7 @@ function CustomQuoteForm() {
           eventType: '',
           eventDate: '',
           guestCount: '',
+          dietaryRestrictions: '',
           message: ''
         });
         setSelectedItems([]);
@@ -256,6 +265,21 @@ function CustomQuoteForm() {
                 </div>
 
                 <div>
+                  <label htmlFor="dietaryRestrictions" className="block text-sm font-medium text-[var(--foreground)] mb-2">
+                    Dietary Restrictions & Allergies
+                  </label>
+                  <textarea
+                    id="dietaryRestrictions"
+                    name="dietaryRestrictions"
+                    value={formData.dietaryRestrictions}
+                    onChange={handleInputChange}
+                    rows={3}
+                    placeholder="Please list any dietary restrictions, allergies, or special dietary needs for your guests..."
+                    className="w-full px-4 py-2 border border-[var(--baguette-light)] rounded-md focus:ring-2 focus:ring-[var(--baguette-primary)] focus:border-transparent bg-[var(--background)] text-[var(--foreground)] resize-vertical"
+                  />
+                </div>
+
+                <div>
                   <label htmlFor="message" className="block text-sm font-medium text-[var(--foreground)] mb-2">
                     Additional Details
                   </label>
@@ -265,7 +289,7 @@ function CustomQuoteForm() {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={4}
-                    placeholder="Tell us more about your event, dietary restrictions, or any special requests..."
+                    placeholder="Tell us more about your event or any special requests..."
                     className="w-full px-4 py-2 border border-[var(--baguette-light)] rounded-md focus:ring-2 focus:ring-[var(--baguette-primary)] focus:border-transparent bg-[var(--background)] text-[var(--foreground)] resize-vertical"
                   />
                 </div>

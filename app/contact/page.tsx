@@ -14,6 +14,7 @@ function ContactForm() {
     eventType: "",
     eventDate: "",
     guestCount: "",
+    dietaryRestrictions: "",
     message: ""
   });
 
@@ -37,9 +38,16 @@ function ContactForm() {
   }, [searchParams]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    let value = e.target.value;
+    
+    // Auto-capitalize name field
+    if (e.target.name === 'name') {
+      value = value.replace(/\b\w/g, (char) => char.toUpperCase());
+    }
+    
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: value
     });
   };
 
@@ -77,6 +85,7 @@ function ContactForm() {
             eventType: "",
             eventDate: "",
             guestCount: "",
+            dietaryRestrictions: "",
             message: ""
           });
         }, 5000);
@@ -290,6 +299,21 @@ function ContactForm() {
               </div>
 
               <div>
+                <label htmlFor="dietaryRestrictions" className="block text-sm font-medium text-[var(--baguette-dark)] mb-2">
+                  Dietary Restrictions & Allergies
+                </label>
+                <textarea
+                  id="dietaryRestrictions"
+                  name="dietaryRestrictions"
+                  rows={3}
+                  value={formData.dietaryRestrictions}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-[var(--baguette-light)] rounded-lg focus:ring-2 focus:ring-[var(--baguette-primary)] focus:border-transparent transition-colors resize-none"
+                  placeholder="Please list any dietary restrictions, allergies, or special dietary needs for your guests..."
+                />
+              </div>
+
+              <div>
                 <label htmlFor="message" className="block text-sm font-medium text-[var(--baguette-dark)] mb-2">
                   Tell us about your event
                 </label>
@@ -300,7 +324,7 @@ function ContactForm() {
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-[var(--baguette-light)] rounded-lg focus:ring-2 focus:ring-[var(--baguette-primary)] focus:border-transparent transition-colors resize-none"
-                  placeholder="Please share any specific requirements, dietary restrictions, or special requests for your event..."
+                  placeholder="Please share any specific requirements or special requests for your event..."
                 />
               </div>
 
