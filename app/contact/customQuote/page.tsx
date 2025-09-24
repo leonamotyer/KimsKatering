@@ -29,15 +29,47 @@ function CustomQuoteForm() {
 
   // Parse selected items from URL parameters
   useEffect(() => {
-    const itemsParam = searchParams.get('items');
-    if (itemsParam) {
+    const items: SelectedItem[] = [];
+    let index = 0;
+    
+    // Check for individual item parameters (item0, item1, etc.)
+    while (true) {
+      const itemParam = searchParams.get(`item${index}`);
+      if (!itemParam) break;
+      
       try {
-        const parsedItems = JSON.parse(decodeURIComponent(itemsParam));
-        setSelectedItems(parsedItems);
+        const [itemName, itemDescription, itemPrice] = itemParam.split('|');
+        if (itemName && itemDescription && itemPrice) {
+          items.push({
+            categoryId: 'custom',
+            categoryName: 'Custom Selection',
+            itemName: itemName,
+            itemDescription: itemDescription,
+            itemPrice: itemPrice
+          });
+        }
       } catch (error) {
-        console.error('Error parsing selected items:', error);
+        console.error(`Error parsing item${index}:`, error);
+      }
+      
+      index++;
+    }
+    
+    // Fallback: check for JSON items parameter (for backward compatibility)
+    if (items.length === 0) {
+      const itemsParam = searchParams.get('items');
+      if (itemsParam) {
+        try {
+          const parsedItems = JSON.parse(decodeURIComponent(itemsParam));
+          setSelectedItems(parsedItems);
+          return;
+        } catch (error) {
+          console.error('Error parsing selected items:', error);
+        }
       }
     }
+    
+    setSelectedItems(items);
   }, [searchParams]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -64,14 +96,6 @@ function CustomQuoteForm() {
     setSubmitStatus('idle');
 
     try {
-      const selectedItemsText = selectedItems.map(item => 
-        `• ${item.itemName} (${item.categoryName}) - ${item.itemPrice}`
-      ).join('\n');
-      
-      const messageWithItems = selectedItems.length > 0 
-        ? `${formData.message}\n\nSelected Menu Items:\n${selectedItemsText}`
-        : formData.message;
-
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
@@ -79,8 +103,8 @@ function CustomQuoteForm() {
         },
         body: JSON.stringify({
           ...formData,
-          message: messageWithItems,
-          hasMenuSelections: selectedItems.length > 0
+          hasMenuSelections: selectedItems.length > 0,
+          selectedItems: selectedItems
         }),
       });
 
