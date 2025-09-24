@@ -28,25 +28,42 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        eventType: "",
-        eventDate: "",
-        guestCount: "",
-        message: ""
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 3000);
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        // Reset form after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            eventType: "",
+            eventDate: "",
+            guestCount: "",
+            message: ""
+          });
+        }, 5000);
+      } else {
+        console.error('Error sending email:', result.error);
+        alert('Sorry, there was an error sending your message. Please try again or call us directly at 403-497-9338.');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('Sorry, there was an error sending your message. Please try again or call us directly at 403-497-9338.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -137,7 +154,8 @@ export default function Contact() {
                 </svg>
               </div>
               <h3 className="text-xl font-medium text-[var(--baguette-dark)] mb-2">Thank You!</h3>
-              <p className="text-[var(--baguette-muted)]">We&apos;ve received your message and will get back to you soon.</p>
+              <p className="text-[var(--baguette-muted)] mb-4">We&apos;ve received your message and Kim will get back to you within 24 hours.</p>
+              <p className="text-sm text-[var(--baguette-muted)]">You should also receive a confirmation email shortly.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
