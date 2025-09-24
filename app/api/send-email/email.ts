@@ -7,15 +7,15 @@ export const EMAIL_CONFIG = {
   // Recipients
   kimEmail: process.env.CONTACT_DEFAULT_TO || 'rlmotyer@gmail.com',
   
-  // Brand colors (matching your website exactly)
-  primaryColor: '#8b5d3b', // Main brown from website
-  secondaryColor: '#fefcf8', // Background cream
-  accentColor: '#c4a882', // Baguette primary
-  lightColor: '#e2d4b8', // Baguette light
-  mediumColor: '#b89a6f', // Baguette medium
-  darkColor: '#3c2e1f', // Foreground dark brown
-  mutedColor: '#8b7d6b', // Muted text
-  subtleColor: '#d1c7b5', // Muted subtle
+  // Brand colors (using CSS global variables)
+  primaryColor: 'var(--baguette-dark)', // Main brown from website
+  secondaryColor: 'var(--background)', // Background cream
+  accentColor: 'var(--baguette-primary)', // Baguette primary
+  lightColor: 'var(--baguette-light)', // Baguette light
+  mediumColor: 'var(--baguette-medium)', // Baguette medium
+  darkColor: 'var(--foreground)', // Foreground dark brown
+  mutedColor: 'var(--muted-text)', // Muted text
+  subtleColor: 'var(--muted-subtle)', // Muted subtle
   
   // Company info
   companyName: 'Kim\'s Catering',
