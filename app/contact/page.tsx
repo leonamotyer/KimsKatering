@@ -1,9 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import VictorianBorder from "../componenets/victorian-animation";
 
-export default function Contact() {
+function ContactForm() {
+  const searchParams = useSearchParams();
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,6 +20,22 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Handle URL parameters for pre-filling form
+  useEffect(() => {
+    const messageParam = searchParams.get('message');
+    const eventTypeParam = searchParams.get('eventType');
+    const guestCountParam = searchParams.get('guestCount');
+    
+    if (messageParam || eventTypeParam || guestCountParam) {
+      setFormData(prev => ({
+        ...prev,
+        message: messageParam ? decodeURIComponent(messageParam) : prev.message,
+        eventType: eventTypeParam ? decodeURIComponent(eventTypeParam) : prev.eventType,
+        guestCount: guestCountParam ? decodeURIComponent(guestCountParam) : prev.guestCount,
+      }));
+    }
+  }, [searchParams]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
@@ -26,9 +45,11 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('📝 Form submitted with data:', formData);
     setIsSubmitting(true);
     
     try {
+      console.log('📤 Sending request to /api/send-email...');
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
@@ -37,9 +58,14 @@ export default function Contact() {
         body: JSON.stringify(formData),
       });
 
+      console.log('📡 Response status:', response.status);
+      console.log('📡 Response ok:', response.ok);
+      
       const result = await response.json();
+      console.log('📡 Response data:', result);
 
       if (response.ok) {
+        console.log('✅ Email sent successfully!');
         setIsSubmitted(true);
         // Reset form after 5 seconds
         setTimeout(() => {
@@ -55,13 +81,15 @@ export default function Contact() {
           });
         }, 5000);
       } else {
-        console.error('Error sending email:', result.error);
-        alert('Sorry, there was an error sending your message. Please try again or call us directly at 403-497-9338.');
+        console.error('❌ Error sending email:', result.error);
+        console.error('❌ Full error result:', result);
+        alert(`Sorry, there was an error sending your message: ${result.error || result.details || 'Unknown error'}. Please try again or call us directly at 403-497-9338.`);
       }
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('❌ Network/parsing error:', error);
       alert('Sorry, there was an error sending your message. Please try again or call us directly at 403-497-9338.');
     } finally {
+      console.log('🏁 Form submission process completed');
       setIsSubmitting(false);
     }
   };
@@ -313,5 +341,13 @@ export default function Contact() {
       {/* Victorian Page Border */}
       <VictorianBorder />
     </div>
+  );
+}
+
+export default function Contact() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContactForm />
+    </Suspense>
   );
 }
