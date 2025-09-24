@@ -1,35 +1,64 @@
 import Image from "next/image";
+import { Metadata } from "next";
 import VictorianBorder from "./componenets/victorian-animation";
+
+export const metadata: Metadata = {
+  title: "Kim's Catering - Premium Catering Services in Strathmore, Alberta",
+  description: "Professional catering services in Strathmore, Alberta. Specializing in weddings, corporate events, funerals, and special occasions. Fresh, homemade food made with love and attention to detail.",
+  keywords: [
+    "catering Strathmore",
+    "wedding catering Alberta",
+    "corporate catering",
+    "funeral catering",
+    "event catering",
+    "homemade food",
+    "fresh catering",
+    "Kim's Catering",
+    "Strathmore catering",
+    "Alberta catering services"
+  ],
+  openGraph: {
+    title: "Kim's Catering - Premium Catering Services in Strathmore, Alberta",
+    description: "Professional catering services in Strathmore, Alberta. Fresh, homemade food for all occasions.",
+    images: ['/og-image.jpg'],
+  },
+};
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <main className="min-h-screen">
       {/* Full Screen Hero Image */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative h-screen w-full overflow-hidden" role="banner" aria-label="Kim's Catering Hero Section">
         <Image
           src="/bread.jpg"
-          alt="Fresh Artisan Bread"
+          alt="Fresh artisan bread and baked goods from Kim's Catering in Strathmore, Alberta"
           fill
           className="object-cover"
           priority
         />
         
         {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-black/30" aria-hidden="true"></div>
         
         {/* Centered Content */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white">
+          <header className="text-center text-white">
             <h1 className="text-6xl md:text-8xl font-bold mb-6">
-              Kim&apos;s katering
+              Kim&apos;s Catering
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-              Professional katering services for your special events
+              Professional catering services for weddings, corporate events, and special occasions in Strathmore, Alberta
             </p>
-            <button className="bg-white text-[var(--baguette-dark)] px-8 py-4 text-lg font-semibold hover:bg-[var(--baguette-subtle)] transition-colors">
-              View Menu
-            </button>
-          </div>
+            <nav aria-label="Main navigation">
+              <a 
+                href="/menu" 
+                className="bg-white text-[var(--baguette-dark)] px-8 py-4 text-lg font-semibold hover:bg-[var(--baguette-subtle)] transition-colors inline-block"
+                aria-label="View our catering menu"
+              >
+                View Menu
+              </a>
+            </nav>
+          </header>
         </div>
         
         {/* Scroll indicator */}
@@ -138,6 +167,6 @@ export default function Home() {
 
       {/* Victorian Page Border */}
       <VictorianBorder />
-    </div>
+    </main>
   );
 }
