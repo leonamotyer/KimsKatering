@@ -1,6 +1,6 @@
 # Kim's katering Website
 
-A beautiful, responsive website for Kim's katering - a local bakery and katering service in Strathmore, Alberta. Built with Next.js 15, TypeScript, and Tailwind CSS.
+A beautiful, responsive website for Kim's katering - a local bakery and katering service in Strathmore, Alberta. Built with Next.js 15, TypeScript, Tailwind CSS, and Resend api. 
 
 ## 🍰 About Kim's katering
 

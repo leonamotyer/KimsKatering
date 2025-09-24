@@ -1,7 +1,72 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import eventsData from "../data/events.json";
 import VictorianBorder from "../componenets/victorian-animation";
+import SelectedItemsPopup from "../componenets/selected-items-popup";
+
+interface MenuItem {
+  name: string;
+  description: string;
+  price: string;
+}
+
+interface SelectedItem {
+  categoryId: string;
+  categoryName: string;
+  itemName: string;
+  itemDescription: string;
+  itemPrice: string;
+}
 
 export default function Events() {
+  const router = useRouter();
+  const [selectedItems, setSelectedItems] = useState<SelectedItem[]>([]);
+
+  const toggleItemSelection = (item: MenuItem, eventName: string) => {
+    setSelectedItems(prev => {
+      const isSelected = prev.some(selected => selected.itemName === item.name);
+      if (isSelected) {
+        return prev.filter(selected => selected.itemName !== item.name);
+      } else {
+        const selectedItem: SelectedItem = {
+          categoryId: 'funeral',
+          categoryName: eventName,
+          itemName: item.name,
+          itemDescription: item.description,
+          itemPrice: item.price
+        };
+        return [...prev, selectedItem];
+      }
+    });
+  };
+
+  const isItemSelected = (item: MenuItem) => {
+    return selectedItems.some(selected => selected.itemName === item.name);
+  };
+
+  const clearSelection = () => {
+    setSelectedItems([]);
+  };
+
+  const handleQuoteRequest = () => {
+    if (selectedItems.length === 0) return;
+    
+    // Create URL parameters for selected items
+    const params = new URLSearchParams();
+    selectedItems.forEach((item, index) => {
+      params.append(`item${index}`, `${item.itemName}|${item.itemDescription}|${item.itemPrice}`);
+    });
+    
+    // Navigate to custom quote page with selected items
+    router.push(`/contact/customQuote?${params.toString()}`);
+  };
+
+  const removeItem = (categoryId: string, itemName: string) => {
+    setSelectedItems(prev => prev.filter(item => item.itemName !== itemName));
+  };
+
   return (
     <div className="min-h-screen bg-stone-50">
       {/* Hero Section */}
@@ -104,7 +169,17 @@ export default function Events() {
                               <h4 className="text-sm font-medium text-[var(--baguette-dark)]">{menu.name}</h4>
                               <span className="text-sm font-medium text-[var(--baguette-muted)]">{menu.price}</span>
                             </div>
-                            <p className="text-sm text-[var(--baguette-muted)]">{menu.description}</p>
+                            <p className="text-sm text-[var(--baguette-muted)] mb-3">{menu.description}</p>
+                            <button
+                              onClick={() => toggleItemSelection(menu, event.name)}
+                              className={`w-full py-2 px-4 text-sm font-medium rounded transition-colors ${
+                                isItemSelected(menu)
+                                  ? 'bg-[var(--baguette-dark)] text-white hover:bg-[var(--baguette-medium)]'
+                                  : 'bg-[var(--baguette-subtle)] text-[var(--baguette-dark)] hover:bg-[var(--baguette-light)] border border-[var(--baguette-light)]'
+                              }`}
+                            >
+                              {isItemSelected(menu) ? '✓ Selected' : 'Select Item'}
+                            </button>
                           </div>
                         ))}
                       </div>
@@ -142,6 +217,16 @@ export default function Events() {
           </div>
         </div>
       </section>
+
+      {/* Selected Items Popup */}
+      {selectedItems.length > 0 && (
+        <SelectedItemsPopup
+          selectedItems={selectedItems}
+          onRemoveItem={removeItem}
+          onClearAll={clearSelection}
+          onRequestQuote={handleQuoteRequest}
+        />
+      )}
 
       {/* Victorian Page Border */}
       <VictorianBorder />
