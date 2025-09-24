@@ -53,14 +53,10 @@ export default function Events() {
   const handleQuoteRequest = () => {
     if (selectedItems.length === 0) return;
     
-    // Create URL parameters for selected items
-    const params = new URLSearchParams();
-    selectedItems.forEach((item, index) => {
-      params.append(`item${index}`, `${item.itemName}|${item.itemDescription}|${item.itemPrice}`);
-    });
-    
-    // Navigate to custom quote page with selected items
-    router.push(`/contact/customQuote?${params.toString()}`);
+    // Create URL parameter with JSON-encoded selected items (same format as menu page)
+    const itemsParam = encodeURIComponent(JSON.stringify(selectedItems));
+    const customQuoteUrl = `/contact/customQuote?items=${itemsParam}`;
+    router.push(customQuoteUrl);
   };
 
   const removeItem = (categoryId: string, itemName: string) => {

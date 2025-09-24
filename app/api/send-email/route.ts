@@ -11,22 +11,31 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     console.log('📝 Request body received:', JSON.stringify(body, null, 2));
     
-    const { name, email, phone, eventType, eventDate, guestCount, message, hasMenuSelections } = body;
+    const { name, email, phone, eventType, eventDate, guestCount, message, hasMenuSelections, selectedItems: requestSelectedItems } = body;
     
-    // Parse selected items from message if it contains menu selections
+    // Use selected items from request body, or parse from message as fallback
     let selectedItems: Array<{itemName: string, categoryName: string, itemPrice: string}> = [];
-    if (hasMenuSelections && message) {
-      // Extract items from the message format: "• Item Name (Category) - Price"
-      const itemMatches = message.match(/•\s*([^(]+)\s*\(([^)]+)\)\s*-\s*([^\n]+)/g);
-      if (itemMatches) {
-        selectedItems = itemMatches.map((match: string) => {
-          const parts = match.match(/•\s*([^(]+)\s*\(([^)]+)\)\s*-\s*([^\n]+)/);
-          return {
-            itemName: parts?.[1]?.trim() || '',
-            categoryName: parts?.[2]?.trim() || '',
-            itemPrice: parts?.[3]?.trim() || ''
-          };
-        });
+    if (hasMenuSelections) {
+      if (requestSelectedItems && Array.isArray(requestSelectedItems)) {
+        // Use selected items from request body (new format)
+        selectedItems = requestSelectedItems.map((item: {itemName: string, categoryName: string, itemPrice: string}) => ({
+          itemName: item.itemName || '',
+          categoryName: item.categoryName || '',
+          itemPrice: item.itemPrice || ''
+        }));
+      } else if (message) {
+        // Fallback: parse from message text (old format)
+        const itemMatches = message.match(/•\s*([^(]+)\s*\(([^)]+)\)\s*-\s*([^\n]+)/g);
+        if (itemMatches) {
+          selectedItems = itemMatches.map((match: string) => {
+            const parts = match.match(/•\s*([^(]+)\s*\(([^)]+)\)\s*-\s*([^\n]+)/);
+            return {
+              itemName: parts?.[1]?.trim() || '',
+              categoryName: parts?.[2]?.trim() || '',
+              itemPrice: parts?.[3]?.trim() || ''
+            };
+          });
+        }
       }
     }
     

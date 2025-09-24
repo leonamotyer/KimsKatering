@@ -29,47 +29,33 @@ function CustomQuoteForm() {
 
   // Parse selected items from URL parameters
   useEffect(() => {
-    const items: SelectedItem[] = [];
-    let index = 0;
-    
-    // Check for individual item parameters (item0, item1, etc.)
-    while (true) {
-      const itemParam = searchParams.get(`item${index}`);
-      if (!itemParam) break;
-      
+    const itemsParam = searchParams.get('items');
+    if (itemsParam) {
       try {
-        const [itemName, itemDescription, itemPrice] = itemParam.split('|');
-        if (itemName && itemDescription && itemPrice) {
+        // Try to parse as JSON first (from menu page)
+        const parsedItems = JSON.parse(decodeURIComponent(itemsParam));
+        setSelectedItems(parsedItems);
+      } catch {
+        // Fallback: parse individual item parameters (from events page)
+        const items: SelectedItem[] = [];
+        let index = 0;
+        while (true) {
+          const itemParam = searchParams.get(`item${index}`);
+          if (!itemParam) break;
+          
+          const [itemName, itemDescription, itemPrice] = itemParam.split('|');
           items.push({
-            categoryId: 'custom',
-            categoryName: 'Custom Selection',
-            itemName: itemName,
-            itemDescription: itemDescription,
-            itemPrice: itemPrice
+            categoryId: 'funeral',
+            categoryName: 'Funerals',
+            itemName: itemName || '',
+            itemDescription: itemDescription || '',
+            itemPrice: itemPrice || ''
           });
+          index++;
         }
-      } catch (error) {
-        console.error(`Error parsing item${index}:`, error);
-      }
-      
-      index++;
-    }
-    
-    // Fallback: check for JSON items parameter (for backward compatibility)
-    if (items.length === 0) {
-      const itemsParam = searchParams.get('items');
-      if (itemsParam) {
-        try {
-          const parsedItems = JSON.parse(decodeURIComponent(itemsParam));
-          setSelectedItems(parsedItems);
-          return;
-        } catch (error) {
-          console.error('Error parsing selected items:', error);
-        }
+        setSelectedItems(items);
       }
     }
-    
-    setSelectedItems(items);
   }, [searchParams]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -103,8 +89,9 @@ function CustomQuoteForm() {
         },
         body: JSON.stringify({
           ...formData,
+          message: formData.message, // Don't add selected items to message - they'll be displayed separately in email template
           hasMenuSelections: selectedItems.length > 0,
-          selectedItems: selectedItems
+          selectedItems: selectedItems // Pass selected items separately
         }),
       });
 
@@ -329,7 +316,15 @@ function CustomQuoteForm() {
               </div>
             ) : (
               <div className="space-y-3">
-                {selectedItems.map((item, index) => (
+                {selectedItems
+                  .sort((a, b) => {
+                    // Sort by category name first, then by item name
+                    if (a.categoryName !== b.categoryName) {
+                      return a.categoryName.localeCompare(b.categoryName);
+                    }
+                    return a.itemName.localeCompare(b.itemName);
+                  })
+                  .map((item, index) => (
                   <div 
                     key={index} 
                     className="flex items-start justify-between p-3 bg-[var(--baguette-subtle)] rounded-lg border border-[var(--baguette-light)]"
