@@ -79,7 +79,7 @@ export default function Home() {
               <div className="w-20 h-20 bg-[var(--baguette-subtle)] rounded-full mx-auto mb-6 flex items-center justify-center">
                 <i className="fi fi-rr-ring text-3xl text-[var(--baguette-muted)]"></i>
               </div>
-              <h3 className="text-2xl font-bold text-[var(--baguette-dark)] mb-4">Wedding katering</h3>
+              <h3 className="text-2xl font-bold text-[var(--baguette-dark)] mb-4">Wedding Catering</h3>
               <p className="text-[var(--baguette-muted)] leading-relaxed">
                 Elegant and delicious meals for your special day. Custom menus tailored to your preferences.
               </p>
@@ -92,7 +92,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-[var(--baguette-dark)] mb-4">Corporate Events</h3>
               <p className="text-[var(--baguette-muted)] leading-relaxed">
-                Professional katering for business meetings, conferences, and corporate gatherings.
+                Professional Catering for business meetings, conferences, and corporate gatherings.
               </p>
             </div>
 
@@ -113,9 +113,9 @@ export default function Home() {
       {/* About Section */}
       <section className="py-20 bg-[var(--baguette-subtle)]">
         <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-4xl font-bold text-[var(--baguette-dark)] mb-8">About Kim&apos;s katering</h2>
+          <h2 className="text-4xl font-bold text-[var(--baguette-dark)] mb-8">About Kim&apos;s Catering</h2>
           <p className="text-lg text-[var(--baguette-muted)] leading-relaxed mb-8">
-            Welcome to Kim&apos;s katering, your friendly neighborhood bakery and katering service! For the past 9 years, 
+            Welcome to Kim&apos;s Catering, your friendly neighborhood bakery and Catering service! For the past 9 years, 
             Kim has been baking up love and delicious memories right here in Strathmore, Alberta at Bay #1 - 70 Slater Rd. 
             What started as a passion for homemade goodness has grown into a beloved local business that brings families together.
           </p>
@@ -154,13 +154,14 @@ export default function Home() {
           <p className="text-lg text-[var(--baguette-muted)] mb-8">
             Ready to plan your next event? Contact us for a consultation and custom quote.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-[var(--baguette-dark)] text-white px-8 py-4 text-lg font-semibold hover:bg-[var(--baguette-medium)] transition-colors">
+          <div className="flex justify-center">
+            <a 
+              href="/contact" 
+              className="bg-[var(--baguette-dark)] text-white px-8 py-4 text-lg font-semibold hover:bg-[var(--baguette-medium)] transition-colors inline-block"
+              aria-label="Contact us for catering services"
+            >
               Contact Us
-            </button>
-            <button className="border-2 border-[var(--baguette-dark)] text-[var(--baguette-dark)] px-8 py-4 text-lg font-semibold hover:bg-[var(--baguette-dark)] hover:text-white transition-colors">
-              View Gallery
-            </button>
+            </a>
           </div>
         </div>
       </section>

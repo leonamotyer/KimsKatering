@@ -8,10 +8,10 @@ export default function About() {
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-[var(--baguette-dark)] mb-6">
-            About Kim&apos;s katering
+            About Kim&apos;s Catering
           </h1>
           <p className="text-xl text-[var(--baguette-muted)] max-w-2xl mx-auto">
-            Your friendly neighborhood bakery and katering service in Strathmore, Alberta
+            Your friendly neighborhood bakery and Catering service in Strathmore, Alberta
           </p>
         </div>
       </section>

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/', '/admin/'],
     },
-    sitemap: 'https://kims-katering.vercel.app/sitemap.xml',
+    sitemap: 'https://kims-Catering.vercel.app/sitemap.xml',
   }
 }

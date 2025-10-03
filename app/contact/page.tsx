@@ -113,7 +113,7 @@ function ContactForm() {
           </h1>
           <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-8"></div>
           <p className="text-lg text-[var(--baguette-muted)] max-w-2xl mx-auto leading-relaxed">
-            Ready to plan your special event? Get in touch with Kim for personalized consultation and custom katering.
+            Ready to plan your special event? Get in touch with Kim for personalized consultation and custom Catering.
           </p>
         </div>
       </section>
@@ -151,7 +151,7 @@ function ContactForm() {
             {/* Email Contact */}
             <div className="text-center">
               <a 
-                href="mailto:kim@kimskatering.ca" 
+                href="mailto:kim@kimsCatering.ca" 
                 className="w-16 h-16 bg-white rounded-full mx-auto mb-6 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow cursor-pointer"
               >
                 <svg className="w-8 h-8 text-[var(--baguette-light)] hover:text-[var(--baguette-primary)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,10 +160,10 @@ function ContactForm() {
               </a>
               <h3 className="text-xl font-medium text-[var(--baguette-dark)] mb-4">Send an Email</h3>
               <a 
-                href="mailto:kim@kimskatering.ca" 
+                href="mailto:kim@kimsCatering.ca" 
                 className="text-lg font-light text-[var(--baguette-muted)] hover:text-[var(--baguette-dark)] transition-colors block mb-2"
               >
-                kim@kimskatering.ca
+                kim@kimsCatering.ca
               </a>
               <p className="text-sm text-[var(--baguette-muted)]">We&apos;ll respond within 24 hours</p>
             </div>
@@ -179,7 +179,7 @@ function ContactForm() {
               Request a Quote
             </h2>
             <p className="text-[var(--baguette-muted)]">
-              Tell us about your event and we&apos;ll create a custom katering plan just for you.
+              Tell us about your event and we&apos;ll create a custom Catering plan just for you.
             </p>
           </div>
 
@@ -356,7 +356,7 @@ function ContactForm() {
             </div>
             <div>
               <h3 className="text-lg font-medium text-[var(--baguette-dark)] mb-2">Custom Menus</h3>
-              <p className="text-[var(--baguette-muted)]">Personalized katering for your special day</p>
+              <p className="text-[var(--baguette-muted)]">Personalized Catering for your special day</p>
             </div>
           </div>
         </div>
