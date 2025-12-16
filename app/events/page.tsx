@@ -9,7 +9,7 @@ import SelectedItemsPopup from "../componenets/selected-items-popup";
 interface MenuItem {
   name: string;
   description: string;
-  price: string;
+  price?: string;
 }
 
 interface SelectedItem {
@@ -35,7 +35,7 @@ export default function Events() {
           categoryName: eventName,
           itemName: item.name,
           itemDescription: item.description,
-          itemPrice: item.price
+          itemPrice: item.price || 'Contact for pricing'
         };
         return [...prev, selectedItem];
       }
@@ -119,25 +119,10 @@ export default function Events() {
                     </div>
                   )}
                   
-                  
-                  {event.specialPricing && (
-                    <div className="mb-4">
-                      <p className="text-sm text-[var(--baguette-muted)] font-medium mb-1">Special Pricing</p>
-                      <p className="text-sm text-[var(--baguette-muted)]">{event.specialPricing}</p>
-                    </div>
-                  )}
-                  
                   {event.capacity && (
                     <div className="mb-4">
                       <p className="text-sm text-[var(--baguette-muted)] font-medium mb-1">Capacity</p>
                       <p className="text-sm text-[var(--baguette-muted)]">{event.capacity}</p>
-                    </div>
-                  )}
-                  
-                  {event.pricing && (
-                    <div className="mb-4">
-                      <p className="text-sm text-[var(--baguette-muted)] font-medium mb-1">Pricing</p>
-                      <p className="text-sm text-[var(--baguette-muted)]">{event.pricing}</p>
                     </div>
                   )}
 
@@ -163,7 +148,6 @@ export default function Events() {
                           <div key={idx} className="border border-[var(--baguette-light)] rounded-lg p-4">
                             <div className="flex justify-between items-start mb-2">
                               <h4 className="text-sm font-medium text-[var(--baguette-dark)]">{menu.name}</h4>
-                              <span className="text-sm font-medium text-[var(--baguette-muted)]">{menu.price}</span>
                             </div>
                             <p className="text-sm text-[var(--baguette-muted)] mb-3">{menu.description}</p>
                             <button

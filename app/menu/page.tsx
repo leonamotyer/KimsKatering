@@ -8,7 +8,7 @@ import SelectedItemsPopup from "../componenets/selected-items-popup";
 interface MenuItem {
   name: string;
   description: string;
-  price: string;
+  price?: string;
 }
 
 interface SelectedItem {
@@ -38,7 +38,7 @@ export default function Menu() {
         categoryName,
         itemName: item.name,
         itemDescription: item.description,
-        itemPrice: item.price
+        itemPrice: item.price || 'Contact for pricing'
       }]);
     }
   };
@@ -131,14 +131,6 @@ export default function Menu() {
                   </div>
                 </div>
 
-                {category.pricingNote && (
-                  <div className="ml-16 pl-8 border-l border-[var(--baguette-light)] mb-8">
-                    <div className="bg-[var(--baguette-subtle)] rounded-lg p-4">
-                      <p className="text-sm text-[var(--baguette-muted)] italic">{category.pricingNote}</p>
-                    </div>
-                  </div>
-                )}
-
                 <div className="ml-16 pl-8 border-l border-[var(--baguette-light)]">
                   <div className="space-y-6">
                     {category.items.map((item, index) => {
@@ -153,9 +145,6 @@ export default function Menu() {
                             <h4 className="text-lg font-medium text-[var(--baguette-dark)] group-hover/item:text-[var(--baguette-dark)] transition-colors">
                               {item.name}
                             </h4>
-                            <span className="text-sm font-medium text-[var(--baguette-muted)] ml-4 flex-shrink-0">
-                              {item.price}
-                            </span>
                           </div>
                           <p className="text-[var(--baguette-muted)] text-sm leading-relaxed mb-3">
                             {item.description}
@@ -185,9 +174,6 @@ export default function Menu() {
                               <h6 className="text-sm font-medium text-[var(--baguette-dark)]">{addon.name}</h6>
                               <p className="text-xs text-[var(--baguette-muted)]">{addon.description}</p>
                             </div>
-                            <span className="text-xs font-medium text-[var(--baguette-muted)] ml-4 flex-shrink-0">
-                              {addon.price}
-                            </span>
                           </div>
                         ))}
                       </div>
