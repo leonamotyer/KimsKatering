@@ -174,7 +174,7 @@ export default function Events() {
                                   : 'bg-[var(--baguette-subtle)] text-[var(--baguette-dark)] hover:bg-[var(--baguette-light)] border border-[var(--baguette-light)]'
                               }`}
                             >
-                              {isItemSelected(menu) ? '✓ Selected' : 'Select Item'}
+                              {isItemSelected(menu) ? '✓ Selected' : 'Add to Custom Quote'}
                             </button>
                           </div>
                         ))}

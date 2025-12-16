@@ -1,8 +1,8 @@
-// Email configuration and templates for Kim's Catering
+// Email configuration and templates for Kim's Katering
 export const EMAIL_CONFIG = {
   // Sender information
   fromEmail: process.env.FROM_EMAIL || 'onboarding@resend.dev', // Resend's verified domain
-  fromName: process.env.FROM_NAME || 'Kim\'s Catering',
+  fromName: process.env.FROM_NAME || 'Kim\'s Katering',
   
   // Recipients
   kimEmail: process.env.CONTACT_DEFAULT_TO || 'rlmotyer@gmail.com',
@@ -18,7 +18,7 @@ export const EMAIL_CONFIG = {
   subtleColor: 'var(--muted-subtle)', // Muted subtle
   
   // Company info
-  companyName: 'Kim\'s Catering',
+  companyName: 'Kim\'s Katering',
   companyAddress: 'Bay #1 - 70 Slater Rd, Strathmore, Alberta',
   companyPhone: '403-497-9338',
   website: 'kims-Catering.vercel.app'
@@ -34,6 +34,7 @@ export const EMAIL_TEMPLATES = {
     eventType?: string;
     eventDate?: string;
     guestCount?: string;
+    eventBudget?: string;
     dietaryRestrictions?: string;
     message: string;
     hasMenuSelections: boolean;
@@ -44,7 +45,7 @@ export const EMAIL_TEMPLATES = {
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>New Catering Inquiry</title>
+      <title>New Katering Inquiry</title>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
     <body style="margin: 0; padding: 0; background-color: ${EMAIL_CONFIG.secondaryColor}; font-family: 'Inter', Arial, sans-serif;">
@@ -58,7 +59,7 @@ export const EMAIL_TEMPLATES = {
           </h1>
           <div style="width: 60px; height: 2px; background-color: ${EMAIL_CONFIG.lightColor}; margin: 15px auto;"></div>
           <p style="color: white; margin: 0; font-size: 16px; font-weight: 300; opacity: 0.9;">
-            ${data.hasMenuSelections ? 'Menu Quote Request' : 'New Catering Inquiry'}
+            ${data.hasMenuSelections ? 'Menu Quote Request' : 'New Katering Inquiry'}
           </p>
         </div>
 
@@ -99,7 +100,7 @@ export const EMAIL_TEMPLATES = {
           </div>
 
           <!-- Event Details -->
-          ${(data.eventType || data.eventDate || data.guestCount || data.dietaryRestrictions) ? `
+          ${(data.eventType || data.eventDate || data.guestCount || data.eventBudget || data.dietaryRestrictions) ? `
           <div style="background-color: ${EMAIL_CONFIG.secondaryColor}; padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 1px solid ${EMAIL_CONFIG.lightColor}; position: relative;">
             <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, ${EMAIL_CONFIG.accentColor}, ${EMAIL_CONFIG.lightColor}); border-radius: 12px 0 0 12px;"></div>
             <h3 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 20px 0; font-size: 22px; font-weight: 600; font-family: 'Playfair Display', serif;">
@@ -125,11 +126,20 @@ export const EMAIL_TEMPLATES = {
               </div>
               ` : ''}
               ${data.guestCount ? `
-              <div style="display: flex; align-items: center; padding: 12px 0; ${data.dietaryRestrictions ? 'border-bottom: 1px solid ' + EMAIL_CONFIG.lightColor + ';' : ''}">
+              <div style="display: flex; align-items: center; padding: 12px 0; ${(data.eventBudget || data.dietaryRestrictions) ? 'border-bottom: 1px solid ' + EMAIL_CONFIG.lightColor + ';' : ''}">
                 <div style="width: 8px; height: 8px; background-color: ${EMAIL_CONFIG.accentColor}; border-radius: 50%; margin-right: 15px;"></div>
                 <div style="flex: 1;">
                   <span style="font-weight: 600; color: ${EMAIL_CONFIG.darkColor}; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Guest Count</span>
                   <div style="color: ${EMAIL_CONFIG.mutedColor}; font-size: 16px; margin-top: 2px;">${data.guestCount} people</div>
+                </div>
+              </div>
+              ` : ''}
+              ${data.eventBudget ? `
+              <div style="display: flex; align-items: center; padding: 12px 0; ${data.dietaryRestrictions ? 'border-bottom: 1px solid ' + EMAIL_CONFIG.lightColor + ';' : ''}">
+                <div style="width: 8px; height: 8px; background-color: ${EMAIL_CONFIG.accentColor}; border-radius: 50%; margin-right: 15px;"></div>
+                <div style="flex: 1;">
+                  <span style="font-weight: 600; color: ${EMAIL_CONFIG.darkColor}; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Event Budget</span>
+                  <div style="color: ${EMAIL_CONFIG.mutedColor}; font-size: 16px; margin-top: 2px;">$${parseFloat(data.eventBudget || '0').toFixed(2)}</div>
                 </div>
               </div>
               ` : ''}
@@ -260,7 +270,7 @@ export const EMAIL_TEMPLATES = {
           <h2 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 25px 0; font-size: 28px; font-weight: 600; font-family: 'Playfair Display', serif;">Hi ${data.name}! 👋</h2>
           
           <p style="color: ${EMAIL_CONFIG.mutedColor}; line-height: 1.7; margin-bottom: 30px; font-size: 16px;">
-            Thank you for your interest in our catering services! We've received your inquiry and Kim will get back to you within 24 hours.
+            Thank you for your interest in our katering services! We've received your inquiry and Kim will get back to you within 24 hours.
           </p>
 
           <!-- What's Next -->
@@ -351,7 +361,7 @@ export const EMAIL_TEMPLATES = {
             <div style="display: grid; gap: 8px;">
               <div style="display: flex; align-items: center; padding: 8px 0;">
                 <div style="width: 6px; height: 6px; background-color: ${EMAIL_CONFIG.accentColor}; border-radius: 50%; margin-right: 12px;"></div>
-                <span style="color: ${EMAIL_CONFIG.mutedColor}; font-size: 16px;">Wedding Catering</span>
+                <span style="color: ${EMAIL_CONFIG.mutedColor}; font-size: 16px;">Wedding Katering</span>
               </div>
               <div style="display: flex; align-items: center; padding: 8px 0;">
                 <div style="width: 6px; height: 6px; background-color: ${EMAIL_CONFIG.accentColor}; border-radius: 50%; margin-right: 12px;"></div>

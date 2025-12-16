@@ -168,7 +168,7 @@ export default function Menu() {
                                 : 'bg-white text-[var(--baguette-dark)] border border-[var(--baguette-light)] hover:bg-[var(--baguette-subtle)]'
                             }`}
                           >
-                            {isSelected ? '✓ Selected' : '+ Select Item'}
+                            {isSelected ? '✓ Selected' : 'Add to Custom Quote'}
                           </button>
                         </div>
                       );

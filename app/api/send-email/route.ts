@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     console.log('📝 Request body received:', JSON.stringify(body, null, 2));
     
-    const { name, email, phone, eventType, eventDate, guestCount, dietaryRestrictions, message, hasMenuSelections, selectedItems: requestSelectedItems } = body;
+    const { name, email, phone, eventType, eventDate, guestCount, eventBudget, dietaryRestrictions, message, hasMenuSelections, selectedItems: requestSelectedItems } = body;
     
     // Use selected items from request body, or parse from message as fallback
     let selectedItems: Array<{itemName: string, categoryName: string, itemPrice: string}> = [];
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
     const emailToKim = await resend.emails.send({
       from: `${EMAIL_CONFIG.fromName} <${EMAIL_CONFIG.fromEmail}>`,
       to: EMAIL_CONFIG.kimEmail,
-      subject: `${hasMenuSelections ? '🍽️ Menu Quote Request' : '🍽️ New Catering Inquiry'} from ${name}`,
+      subject: `${hasMenuSelections ? '🍽️ Menu Quote Request' : '🍽️ New Katering Inquiry'} from ${name}`,
       html: EMAIL_TEMPLATES.inquiryEmail({
         name,
         email,
@@ -70,6 +70,7 @@ export async function POST(request: NextRequest) {
         eventType,
         eventDate,
         guestCount,
+        eventBudget,
         dietaryRestrictions,
         message,
         hasMenuSelections,

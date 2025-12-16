@@ -113,7 +113,7 @@ function ContactForm() {
           </h1>
           <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-8"></div>
           <p className="text-lg text-[var(--baguette-muted)] max-w-2xl mx-auto leading-relaxed">
-            Ready to plan your special event? Get in touch with Kim for personalized consultation and custom Catering.
+            Ready to plan your special event? Get in touch with Kim for personalized consultation and custom Katering.
           </p>
         </div>
       </section>
@@ -179,7 +179,7 @@ function ContactForm() {
               Request a Quote
             </h2>
             <p className="text-[var(--baguette-muted)]">
-              Tell us about your event and we&apos;ll create a custom Catering plan just for you.
+              Tell us about your event and we&apos;ll create a custom Katering plan just for you.
             </p>
           </div>
 
@@ -356,7 +356,7 @@ function ContactForm() {
             </div>
             <div>
               <h3 className="text-lg font-medium text-[var(--baguette-dark)] mb-2">Custom Menus</h3>
-              <p className="text-[var(--baguette-muted)]">Personalized Catering for your special day</p>
+              <p className="text-[var(--baguette-muted)]">Personalized Katering for your special day</p>
             </div>
           </div>
         </div>

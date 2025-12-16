@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import VictorianBorder from "./componenets/victorian-animation";
 
 export const metadata: Metadata = {
-  title: "Kim's Catering - Premium Catering Services in Strathmore, Alberta",
-  description: "Professional catering services in Strathmore, Alberta. Specializing in weddings, corporate events, funerals, and special occasions. Fresh, homemade food made with love and attention to detail.",
+  title: "Kim's Katering - Premium Katering Services in Strathmore, Alberta",
+  description: "Professional Katering services in Strathmore, Alberta. Specializing in weddings, corporate events, funerals, and special occasions. Fresh, homemade food made with love and attention to detail.",
   keywords: [
     "catering Strathmore",
     "wedding catering Alberta",
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     "Alberta catering services"
   ],
   openGraph: {
-    title: "Kim's Catering - Premium Catering Services in Strathmore, Alberta",
-    description: "Professional catering services in Strathmore, Alberta. Fresh, homemade food for all occasions.",
+    title: "Kim's Katering - Premium Katering Services in Strathmore, Alberta",
+    description: "Professional Katering services in Strathmore, Alberta. Fresh, homemade food for all occasions.",
     images: ['/og-image.jpg'],
   },
 };
@@ -28,10 +28,10 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Full Screen Hero Image */}
-      <section className="relative h-screen w-full overflow-hidden" role="banner" aria-label="Kim's Catering Hero Section">
+      <section className="relative h-screen w-full overflow-hidden" role="banner" aria-label="Kim's Katering Hero Section">
         <Image
           src="/bread.jpg"
-          alt="Fresh artisan bread and baked goods from Kim's Catering in Strathmore, Alberta"
+          alt="Fresh artisan bread and baked goods from Kim's Katering in Strathmore, Alberta"
           fill
           className="object-cover"
           priority
@@ -44,16 +44,16 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center justify-center">
           <header className="text-center text-white">
             <h1 className="text-6xl md:text-8xl font-bold mb-6">
-              Kim&apos;s Catering
+              Kim&apos;s Katering
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-              Professional catering services for weddings, corporate events, and special occasions in Strathmore, Alberta
+              Professional Katering services for weddings, corporate events, and special occasions in Strathmore, Alberta
             </p>
             <nav aria-label="Main navigation">
               <a 
                 href="/menu" 
                 className="bg-white text-[var(--baguette-dark)] px-8 py-4 text-lg font-semibold hover:bg-[var(--baguette-subtle)] transition-colors inline-block"
-                aria-label="View our catering menu"
+                aria-label="View our Katering menu"
               >
                 View Menu
               </a>
@@ -79,7 +79,7 @@ export default function Home() {
               <div className="w-20 h-20 bg-[var(--baguette-subtle)] rounded-full mx-auto mb-6 flex items-center justify-center">
                 <i className="fi fi-rr-ring text-3xl text-[var(--baguette-muted)]"></i>
               </div>
-              <h3 className="text-2xl font-bold text-[var(--baguette-dark)] mb-4">Wedding Catering</h3>
+              <h3 className="text-2xl font-bold text-[var(--baguette-dark)] mb-4">Wedding Katering</h3>
               <p className="text-[var(--baguette-muted)] leading-relaxed">
                 Elegant and delicious meals for your special day. Custom menus tailored to your preferences.
               </p>
@@ -92,7 +92,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-[var(--baguette-dark)] mb-4">Corporate Events</h3>
               <p className="text-[var(--baguette-muted)] leading-relaxed">
-                Professional Catering for business meetings, conferences, and corporate gatherings.
+                Professional Katering for business meetings, conferences, and corporate gatherings.
               </p>
             </div>
 
@@ -113,9 +113,9 @@ export default function Home() {
       {/* About Section */}
       <section className="py-20 bg-[var(--baguette-subtle)]">
         <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-4xl font-bold text-[var(--baguette-dark)] mb-8">About Kim&apos;s Catering</h2>
+          <h2 className="text-4xl font-bold text-[var(--baguette-dark)] mb-8">About Kim&apos;s Katering</h2>
           <p className="text-lg text-[var(--baguette-muted)] leading-relaxed mb-8">
-            Welcome to Kim&apos;s Catering, your friendly neighborhood bakery and Catering service! For the past 9 years, 
+            Welcome to Kim&apos;s Katering, your friendly neighborhood bakery and Katering service! For the past 9 years, 
             Kim has been baking up love and delicious memories right here in Strathmore, Alberta at Bay #1 - 70 Slater Rd. 
             What started as a passion for homemade goodness has grown into a beloved local business that brings families together.
           </p>

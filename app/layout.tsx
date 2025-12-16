@@ -15,10 +15,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Kim's Catering - Premium Catering Services in Strathmore, Alberta",
-    template: "%s | Kim's Catering"
+    default: "Kim's Katering - Premium Katering Services in Strathmore, Alberta",
+    template: "%s | Kim's Katering"
   },
-  description: "Professional catering services in Strathmore, Alberta. Specializing in weddings, corporate events, funerals, and special occasions. Fresh, homemade food made with love and attention to detail.",
+  description: "Professional Katering services in Strathmore, Alberta. Specializing in weddings, corporate events, funerals, and special occasions. Fresh, homemade food made with love and attention to detail.",
   keywords: [
     "catering Strathmore",
     "wedding catering Alberta",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     "Strathmore catering",
     "Alberta catering services"
   ],
-  authors: [{ name: "Kim's Catering" }],
-  creator: "Kim's Catering",
-  publisher: "Kim's Catering",
+  authors: [{ name: "Kim's Katering" }],
+  creator: "Kim's Katering",
+  publisher: "Kim's Katering",
   formatDetection: {
     email: false,
     address: false,
@@ -46,23 +46,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_CA',
-    url: 'https://kims-Catering.vercel.app',
-    siteName: "Kim's Catering",
-    title: "Kim's Catering - Premium Catering Services in Strathmore, Alberta",
-    description: "Professional catering services in Strathmore, Alberta. Specializing in weddings, corporate events, funerals, and special occasions. Fresh, homemade food made with love.",
+    url: 'https://kims-Katering.vercel.app',
+    siteName: "Kim's Katering",
+    title: "Kim's Katering - Premium Katering Services in Strathmore, Alberta",
+    description: "Professional Katering services in Strathmore, Alberta. Specializing in weddings, corporate events, funerals, and special occasions. Fresh, homemade food made with love.",
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: "Kim's Catering - Professional Catering Services",
+        alt: "Kim's Katering - Professional Katering Services",
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Kim's Catering - Premium Catering Services",
-    description: "Professional catering services in Strathmore, Alberta. Fresh, homemade food for all occasions.",
+    title: "Kim's Katering - Premium Katering Services",
+    description: "Professional Katering services in Strathmore, Alberta. Fresh, homemade food for all occasions.",
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -91,12 +91,12 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://kims-Catering.vercel.app/#business",
-        "name": "Kim's Catering",
-        "description": "Professional catering services in Strathmore, Alberta specializing in weddings, corporate events, funerals, and special occasions.",
-        "url": "https://kims-Catering.vercel.app",
+        "@id": "https://kims-Katering.vercel.app/#business",
+        "name": "Kim's Katering",
+        "description": "Professional Katering services in Strathmore, Alberta specializing in weddings, corporate events, funerals, and special occasions.",
+        "url": "https://kims-Katering.vercel.app",
         "telephone": "403-497-9338",
-        "email": "kim@kimsCatering.ca",
+        "email": "kim@kimsKatering.ca",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Bay #1 - 70 Slater Rd",
@@ -112,29 +112,29 @@ export default function RootLayout({
         "openingHours": "Mo-Fr 08:00-18:00",
         "priceRange": "$$",
         "servedCuisine": "Canadian",
-        "hasMenu": "https://kims-Catering.vercel.app/menu",
-        "image": "https://kims-Catering.vercel.app/og-image.jpg",
-        "logo": "https://kims-Catering.vercel.app/logo.png",
+        "hasMenu": "https://kims-Katering.vercel.app/menu",
+        "image": "https://kims-Katering.vercel.app/og-image.jpg",
+        "logo": "https://kims-Katering.vercel.app/logo.png",
         "sameAs": [
-          "https://www.facebook.com/kimscatering",
-          "https://www.instagram.com/kimscatering"
+          "https://www.facebook.com/kimsKatering",
+          "https://www.instagram.com/kimsKatering"
         ]
       },
       {
         "@type": "WebSite",
-        "@id": "https://kims-Catering.vercel.app/#website",
-        "url": "https://kims-Catering.vercel.app",
-        "name": "Kim's Catering",
-        "description": "Professional catering services in Strathmore, Alberta",
+        "@id": "https://kims-Katering.vercel.app/#website",
+        "url": "https://kims-Katering.vercel.app",
+        "name": "Kim's Katering",
+        "description": "Professional Katering services in Strathmore, Alberta",
         "publisher": {
-          "@id": "https://kims-Catering.vercel.app/#business"
+          "@id": "https://kims-Katering.vercel.app/#business"
         },
         "potentialAction": [
           {
             "@type": "SearchAction",
             "target": {
               "@type": "EntryPoint",
-              "urlTemplate": "https://kims-Catering.vercel.app/search?q={search_term_string}"
+              "urlTemplate": "https://kims-Katering.vercel.app/search?q={search_term_string}"
             },
             "query-input": "required name=search_term_string"
           }
@@ -142,47 +142,47 @@ export default function RootLayout({
       },
       {
         "@type": "Service",
-        "@id": "https://kims-Catering.vercel.app/#services",
-        "name": "Catering Services",
-        "description": "Professional catering for weddings, corporate events, funerals, and special occasions",
+        "@id": "https://kims-Katering.vercel.app/#services",
+        "name": "Katering Services",
+        "description": "Professional Katering for weddings, corporate events, funerals, and special occasions",
         "provider": {
-          "@id": "https://kims-Catering.vercel.app/#business"
+          "@id": "https://kims-Katering.vercel.app/#business"
         },
-        "serviceType": "Catering",
+        "serviceType": "Katering",
         "areaServed": {
           "@type": "City",
           "name": "Strathmore, Alberta"
         },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
-          "name": "Catering Menu",
+          "name": "Katering Menu",
           "itemListElement": [
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Wedding Catering"
+                "name": "Wedding Katering"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Corporate Catering"
+                "name": "Corporate Katering"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Funeral Catering"
+                "name": "Funeral Katering"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Event Catering"
+                "name": "Event Katering"
               }
             }
           ]

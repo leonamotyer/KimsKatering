@@ -9,12 +9,12 @@
     {
       "id": "corporate-lunches",
       "name": "Corporate Lunches",
-      "description": "Impress your clients and colleagues with our professional Catering services. Perfect for business meetings, conferences, and corporate events. We provide fresh, delicious meals that keep your team energized and focused."
+      "description": "Impress your clients and colleagues with our professional Katering services. Perfect for business meetings, conferences, and corporate events. We provide fresh, delicious meals that keep your team energized and focused."
     },
     {
       "id": "corporate-specials",
       "name": "Corporate Specials",
-      "description": "Elevate your corporate events with our premium Catering packages. From executive dinners to company celebrations, we offer sophisticated menus and impeccable service that reflects your company's standards."
+      "description": "Elevate your corporate events with our premium Katering packages. From executive dinners to company celebrations, we offer sophisticated menus and impeccable service that reflects your company's standards."
     },
     {
       "id": "family-reunions",
@@ -25,28 +25,24 @@
     {
       "id": "fundraisers",
       "name": "Fundraisers",
-      "description": "Support your cause with our community-focused Catering. We're proud to help local organizations and charities with delicious food that brings people together for a good cause. Special rates available for non-profit events."
+      "description": "Support your cause with our community-focused Katering. We're proud to help local organizations and charities with delicious food that brings people together for a good cause. Special rates available for non-profit events."
     },
     {
       "id": "funerals",
       "name": "Funerals",
-      "description": "Honor your loved one's memory with our respectful and comforting Catering services. We provide gentle, nourishing meals for families during difficult times, allowing you to focus on what matters most while we take care of the details.",
-      "specialPricing": "Special funeral and celebration of life pricing available",
+      "description": "Honor your loved one's memory with our respectful and comforting Katering services. We provide gentle, nourishing meals for families during difficult times, allowing you to focus on what matters most while we take care of the details.",
       "menus": [
         {
           "name": "Menu 1",
-          "description": "Open faced buns - chicken, egg, ham salad, ham & cheese. Fresh veggies and dip, pickles, assorted homemade squares and cookies. Disposable napkins and dishes included.",
-          "price": "$6.00 plus GST"
+          "description": "Open faced buns - chicken, egg, ham salad, ham & cheese. Fresh veggies and dip, pickles, assorted homemade squares and cookies. Disposable napkins and dishes included."
         },
         {
           "name": "Menu 2", 
-          "description": "Assorted sandwiches including wraps, croissants, ciabatta buns, whole wheat bread. Variety includes ham and swiss, veggie wraps, chicken salad, montreal beef with havarti, chicken BLT, egg and ham salad. Fresh Veggie and Fruit Trays with dip, pickle tray, homemade squares and cookies. Coffee, tea, and punch included. Disposable napkins and dishes.",
-          "price": "$7.50 plus GST"
+          "description": "Assorted sandwiches including wraps, croissants, ciabatta buns, whole wheat bread. Variety includes ham and swiss, veggie wraps, chicken salad, montreal beef with havarti, chicken BLT, egg and ham salad. Fresh Veggie and Fruit Trays with dip, pickle tray, homemade squares and cookies. Coffee, tea, and punch included. Disposable napkins and dishes."
         },
         {
           "name": "Menu 3",
-          "description": "Gourmet meat and cheese tray with assorted crackers, pickle tray, veggies and dip, fresh fruit and dip, assorted spiral appetizers, finger sandwiches, homemade squares, tarts and cookies. Coffee, tea and punch included. Disposable dishes and napkins.",
-          "price": "$8.50 plus GST"
+          "description": "Gourmet meat and cheese tray with assorted crackers, pickle tray, veggies and dip, fresh fruit and dip, assorted spiral appetizers, finger sandwiches, homemade squares, tarts and cookies. Coffee, tea and punch included. Disposable dishes and napkins."
         }
       ]
     },
@@ -54,19 +50,18 @@
       "id": "rental-space",
       "name": "Rental Space",
       "description": "Host your event in our beautiful new cafe space. Perfect for intimate gatherings, business meetings, or special celebrations with a warm, welcoming atmosphere.",
-      "capacity": "Up to 70 people",
-      "pricing": "Contact Kim for rental pricing details"
+      "capacity": "Up to 70 people"
     },
     {
       "id": "special-events",
       "name": "Special Events",
-      "description": "Make any occasion extraordinary with our custom Catering solutions. Whether it's an anniversary, graduation, retirement party, or any other milestone, we'll create a memorable dining experience tailored to your unique celebration.",
+      "description": "Make any occasion extraordinary with our custom Katering solutions. Whether it's an anniversary, graduation, retirement party, or any other milestone, we'll create a memorable dining experience tailored to your unique celebration.",
       "customization": "Kim is available to customize your menu for any special event, ensuring every detail reflects your vision."
     },
     {
       "id": "weddings",
       "name": "Weddings",
-      "description": "Make your special day absolutely perfect with our romantic and elegant wedding Catering. From intimate ceremonies to grand receptions, we create beautiful, delicious experiences that you and your guests will treasure forever.",
+      "description": "Make your special day absolutely perfect with our romantic and elegant wedding Katering. From intimate ceremonies to grand receptions, we create beautiful, delicious experiences that you and your guests will treasure forever.",
       "specialServices": [
         "Wedding cake coordination through Amber's Photography",
         "Head table service at no additional charge",
@@ -77,9 +72,9 @@
     }
   ],
   "generalInfo": {
-    "philosophy": "Kim's Catering takes pride in making your event memorable for all to enjoy. We plan, prepare and serve to take the worries off your hands and into ours.",
+    "philosophy": "Kim's Katering takes pride in making your event memorable for all to enjoy. We plan, prepare and serve to take the worries off your hands and into ours.",
     "customization": "Whether it's a birthday, anniversary, family reunion, or any special occasion, Kim is available to customize your menu to perfectly suit your needs.",
-    "specialtyItems": "Kim's Cafe and Catering offers specialty items including custom cakes, fruit and baking baskets, and other unique treats.",
+    "specialtyItems": "Kim's Cafe and Katering offers specialty items including custom cakes, fruit and baking baskets, and other unique treats.",
     "contact": "For pricing on menu additions or any questions, please contact Kim at 403-497-9338"
   }
 }

@@ -21,6 +21,7 @@ function CustomQuoteForm() {
     eventType: '',
     eventDate: '',
     guestCount: '',
+    eventBudget: '',
     dietaryRestrictions: '',
     message: ''
   });
@@ -68,6 +69,25 @@ function CustomQuoteForm() {
       processedValue = value.replace(/\b\w/g, (char) => char.toUpperCase());
     }
     
+    // Format event budget as currency
+    if (name === 'eventBudget') {
+      // Remove all non-numeric characters except decimal point
+      let numericValue = value.replace(/[^\d.]/g, '');
+      
+      // Ensure only one decimal point
+      const parts = numericValue.split('.');
+      if (parts.length > 2) {
+        numericValue = parts[0] + '.' + parts.slice(1).join('');
+      }
+      
+      // Limit to 2 decimal places
+      if (parts.length === 2 && parts[1].length > 2) {
+        numericValue = parts[0] + '.' + parts[1].substring(0, 2);
+      }
+      
+      processedValue = numericValue;
+    }
+    
     setFormData(prev => ({
       ...prev,
       [name]: processedValue
@@ -112,6 +132,7 @@ function CustomQuoteForm() {
           eventType: '',
           eventDate: '',
           guestCount: '',
+          eventBudget: '',
           dietaryRestrictions: '',
           message: ''
         });
@@ -262,6 +283,26 @@ function CustomQuoteForm() {
                       className="w-full px-4 py-2 border border-[var(--baguette-light)] rounded-md focus:ring-2 focus:ring-[var(--baguette-primary)] focus:border-transparent bg-[var(--background)] text-[var(--foreground)]"
                     />
                   </div>
+                </div>
+
+                <div>
+                  <label htmlFor="eventBudget" className="block text-sm font-medium text-[var(--foreground)] mb-2">
+                    Event Budget
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--foreground)]">$</span>
+                    <input
+                      type="text"
+                      id="eventBudget"
+                      name="eventBudget"
+                      value={formData.eventBudget}
+                      onChange={handleInputChange}
+                      placeholder="0.00"
+                      inputMode="decimal"
+                      className="w-full pl-8 pr-4 py-2 border border-[var(--baguette-light)] rounded-md focus:ring-2 focus:ring-[var(--baguette-primary)] focus:border-transparent bg-[var(--background)] text-[var(--foreground)]"
+                    />
+                  </div>
+                  <p className="mt-1 text-xs text-[var(--muted-text)]">Enter your budget amount (e.g., 1500.00)</p>
                 </div>
 
                 <div>

@@ -1,10 +1,10 @@
-# Kim's Catering Website
+# Kim's Katering Website
 
-A beautiful, responsive website for Kim's Catering - a local bakery and catering service in Strathmore, Alberta. Built with Next.js 15, TypeScript, Tailwind CSS, and Resend api. 
+A beautiful, responsive website for Kim's Katering - a local bakery and Katering service in Strathmore, Alberta. Built with Next.js 15, TypeScript, Tailwind CSS, and Resend api. 
 
-## 🍰 About Kim's Catering
+## 🍰 About Kim's Katering
 
-Kim's Catering has been serving the Strathmore community for over 9 years, specializing in homemade pies, fresh-baked buns, delicate butter horns, and custom cakes made with real cream and premium Callebaut chocolate. Located at Bay #1 - 70 Slater Rd, Strathmore, Alberta.
+Kim's Katering has been serving the Strathmore community for over 9 years, specializing in homemade pies, fresh-baked buns, delicate butter horns, and custom cakes made with real cream and premium Callebaut chocolate. Located at Bay #1 - 70 Slater Rd, Strathmore, Alberta.
 
 ## ✨ Features
 
@@ -38,7 +38,7 @@ Kim's Catering has been serving the Strathmore community for over 9 years, speci
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd kims-catering
+cd kims-Katering
 ```
 
 2. Install dependencies:
@@ -68,7 +68,7 @@ bun dev
 ## 📁 Project Structure
 
 ```
-kims-catering/
+kims-Katering/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── about/             # About page
@@ -130,7 +130,7 @@ The website uses a custom golden brown baguette color scheme:
 ## 📞 Contact Information
 
 - **Phone**: 403-497-9338
-- **Email**: kim@kimscatering.ca
+- **Email**: kim@kimsKatering.ca
 - **Location**: Bay #1 - 70 Slater Rd, Strathmore, Alberta
 
 ## 🚀 Deployment
@@ -159,7 +159,7 @@ This Next.js app can be deployed to any platform that supports Node.js:
 
 ## 📄 License
 
-This project is private and proprietary to Kim's Catering.
+This project is private and proprietary to Kim's Katering.
 
 ## 🙏 Acknowledgments
 
@@ -170,4 +170,4 @@ This project is private and proprietary to Kim's Catering.
 
 ---
 
-**Kim's Catering** - Where love is baked into every bite! 🥖✨# KimsCatering
+**Kim's Katering** - Where love is baked into every bite! 🥖✨# KimsKatering

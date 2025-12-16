@@ -7,93 +7,76 @@
       "items": [
         {
           "name": "Yogurt and Granola Cups",
-          "description": "Strawberry or Blueberry. Add fresh fruit or baking for $2 extra",
-          "price": "$2.99 per person"
+          "description": "Strawberry or Blueberry. Add fresh fruit or baking for $2 extra"
+        
         },
         {
           "name": "Light Breakfast",
-          "description": "May include homemade muffins, loaves or biscuits",
-          "price": "$2.50 per person"
+          "description": "May include homemade muffins, loaves or biscuits"
         },
         {
           "name": "Pancakes or French Toast",
-          "description": "Available toppings include apple, blueberry, peach or strawberry toppings and whipped cream. Comes with ham, bacon or sausage",
-          "price": "$8.00 per person"
+          "description": "Available toppings include apple, blueberry, peach or strawberry toppings and whipped cream. Comes with ham, bacon or sausage"
         },
         {
           "name": "Fresh Homemade Cinnamon Buns, Butter Horns, Orange Rolls and Scones",
-          "description": "Fresh-baked pastries made daily",
-          "price": "$3.00 per person"
+          "description": "Fresh-baked pastries made daily"
         },
         {
           "name": "Egg McMuffins",
-          "description": "Made with cheese and ham or bacon. Egg & Cheese BLT on Kaiser or Bagel available",
-          "price": "$6.00 per person ($7.99 for BLT)"
+          "description": "Made with cheese and ham or bacon. Egg & Cheese BLT on Kaiser or Bagel available"
         },
         {
           "name": "Baking and Fruit",
-          "description": "May include muffins, loaves, biscuits, scones, cinnamon buns, butterhorns or orange rolls",
-          "price": "$4.50 per person"
+          "description": "May include muffins, loaves, biscuits, scones, cinnamon buns, butterhorns or orange rolls"
         },
         {
           "name": "Croissants and Toasted Bagels",
-          "description": "Comes with a variety of jams and cream cheese",
-          "price": "$3.00 per person"
+          "description": "Comes with a variety of jams and cream cheese"
         },
         {
           "name": "Continental",
-          "description": "Fresh fruit and dip, cheese tray, and homemade baking. Comes with a cracker basket",
-          "price": "$7.25 per person"
+          "description": "Fresh fruit and dip, cheese tray, and homemade baking. Comes with a cracker basket"
         },
         {
           "name": "Breakfast Casserole",
-          "description": "Choice of Cheesy Hashbrown and Sausages or Traditional Bread/Ham/Cheese & Egg",
-          "price": "$7.00 per person"
+          "description": "Choice of Cheesy Hashbrown and Sausages or Traditional Bread/Ham/Cheese & Egg"
         },
         {
           "name": "Crepes Buffet",
-          "description": "Available toppings include bumbleberry, peach or strawberry cheesecake toppings, whipped cream, nutella, and banana",
-          "price": "$11.50 per person"
+          "description": "Available toppings include bumbleberry, peach or strawberry cheesecake toppings, whipped cream, nutella, and banana"
         },
         {
           "name": "Quiche and Fresh Fruit",
-          "description": "Fresh quiche with seasonal fruit",
-          "price": "$10.00 per person"
+          "description": "Fresh quiche with seasonal fruit"
         },
         {
           "name": "Breakfast Wraps",
-          "description": "Scrambled eggs with ham, cheese, bell peppers. Add black beans, salsa, guacamole for $1 extra",
-          "price": "$7.99 per person"
+          "description": "Scrambled eggs with ham, cheese, bell peppers. Add black beans, salsa, guacamole for $1 extra"
         },
         {
           "name": "Healthy Wrap",
-          "description": "Seasoned Egg whites, spinach, tomatoes, peppers, onions and turkey bacon",
-          "price": "$9.99 per person"
+          "description": "Seasoned Egg whites, spinach, tomatoes, peppers, onions and turkey bacon"
         },
         {
           "name": "Scrambled Eggs",
-          "description": "Comes with roasted potatoes, sausage, and ham or bacon",
-          "price": "$9.00 per person"
+          "description": "Comes with roasted potatoes, sausage, and ham or bacon"
         },
         {
           "name": "Strawberry Sticky Buns or Strawberry Cream Pastries",
-          "description": "Fresh strawberry pastries",
-          "price": "$4.00 per person"
+          "description": "Fresh strawberry pastries"
         }
       ],
       "addOns": [
         {
           "name": "Add Juice, Coffee and Tea",
-          "description": "Fresh juice, coffee and tea service",
-          "price": "$2.00 per person"
+          "description": "Fresh juice, coffee and tea service"
         },
         {
           "name": "Disposable Dishware",
-          "description": "Complete disposable serviceware",
-          "price": "$0.75 per person"
+          "description": "Complete disposable serviceware"
         }
-      ],
-      "pricingNote": "Prices are based on drop off service. All orders are buffet style. There is an additional charge for servers and dishes. Prices subject to change without notice."
+      ]
     },
     {
       "id": "sandwich-shop",
@@ -102,18 +85,15 @@
       "items": [
         {
           "name": "Classic Sandwiches",
-          "description": "Fresh bread with premium meats, cheeses, and vegetables",
-          "price": "Contact for pricing"
+          "description": "Fresh bread with premium meats, cheeses, and vegetables"
         },
         {
           "name": "Wraps & Specialty Breads",
-          "description": "Wraps, croissants, ciabatta, and whole wheat options",
-          "price": "Contact for pricing"
+          "description": "Wraps, croissants, ciabatta, and whole wheat options"
         },
         {
           "name": "Soup of the Day",
-          "description": "Homemade soups made with fresh, local ingredients",
-          "price": "Contact for pricing"
+          "description": "Homemade soups made with fresh, local ingredients"
         }
       ]
     },
@@ -121,204 +101,164 @@
       "id": "lunch",
       "name": "Lunch",
       "description": "Satisfying midday meals for any occasion",
-      "pricingNote": "Prices are based on drop off service. All orders are buffet style. There is an additional charge for servers and dishes. Prices subject to change without notice.",
       "items": [
         {
           "name": "Homemade Soup and Buns",
-          "description": "Choice of Biscuit or Cornbread. For more than 20 people, 2 soups can be requested. $1 extra for taco soup, clam chowder or chili",
-          "price": "$6.00 per person"
+          "description": "Choice of Biscuit or Cornbread. For more than 20 people, 2 soups can be requested. $1 extra for taco soup, clam chowder or chili"
         },
         {
           "name": "Spaghetti and Garlic Bread",
-          "description": "Side dish may include a salad",
-          "price": "$10.50 per person"
+          "description": "Side dish may include a salad"
         },
         {
           "name": "Chicken or Beef Stirfry",
-          "description": "Comes with spring rolls and rice",
-          "price": "$11.50 per person"
+          "description": "Comes with spring rolls and rice"
         },
         {
           "name": "Soup, Salad and Buns",
-          "description": "Soup and Salad choices available",
-          "price": "$10.00 per person"
+          "description": "Soup and Salad choices available"
         },
         {
           "name": "Salad Bar",
-          "description": "Includes blackbeans, chick peas, corn, cheese, peppers, onions, tomatoes, cucumbers, craisins, sunflower seeds, nuts, bacon bits, croutons. Add chicken/shrimp or seasoned ground beef for extra $2",
-          "price": "$12.00 per person"
+          "description": "Includes blackbeans, chick peas, corn, cheese, peppers, onions, tomatoes, cucumbers, craisins, sunflower seeds, nuts, bacon bits, croutons. Add chicken/shrimp or seasoned ground beef for extra $2"
         },
         {
           "name": "Assorted Sandwiches and Wraps",
-          "description": "Variety of sandwich choices available",
-          "price": "$8.50 per person"
+          "description": "Variety of sandwich choices available"
         },
         {
           "name": "Assorted Wraps",
-          "description": "Varieties include: Chicken Caesar or Chicken Ranch, BLT, Egg Salad, Ham and Cheese, Veggie and California BLT",
-          "price": "$9.00 per person"
+          "description": "Varieties include: Chicken Caesar or Chicken Ranch, BLT, Egg Salad, Ham and Cheese, Veggie and California BLT"
         },
         {
           "name": "Mini Triangle Sandwiches and Open Faced Buns",
-          "description": "Chicken salad, ham salad, egg salad, ham and cheese with pickles",
-          "price": "$7.50 per person"
+          "description": "Chicken salad, ham salad, egg salad, ham and cheese with pickles"
         },
         {
           "name": "Soup and Sandwich",
-          "description": "Choice of soup with a variety of sandwich trays",
-          "price": "$10.50 per person"
+          "description": "Choice of soup with a variety of sandwich trays"
         },
         {
           "name": "Make Your Own Sandwich with Soup and Salad",
-          "description": "Includes lettuce, tomatoes, cheese, egg or chicken salad, cold cuts, pickles and a variety of buns",
-          "price": "$13.00 per person"
+          "description": "Includes lettuce, tomatoes, cheese, egg or chicken salad, cold cuts, pickles and a variety of buns"
         },
         {
           "name": "Chicken Caesar Salad",
-          "description": "Comes with garlic bread or rolls",
-          "price": "$12.00 per person"
+          "description": "Comes with garlic bread or rolls"
         },
         {
           "name": "Salads (2 options)",
-          "description": "Side dish may include homemade bun, biscuit, or garlic bread",
-          "price": "$9.00 per person"
+          "description": "Side dish may include homemade bun, biscuit, or garlic bread"
         },
         {
           "name": "Chicken a la King or Chicken Pot Pie",
-          "description": "Served with homemade biscuits and choice of salad",
-          "price": "$11.50 per person"
+          "description": "Served with homemade biscuits and choice of salad"
         },
         {
           "name": "Roasted Pork Loin or Mushroom Pork Chops",
-          "description": "Comes with choice of Potato and veggie or salad",
-          "price": "$12.50 per person"
+          "description": "Comes with choice of Potato and veggie or salad"
         },
         {
           "name": "Beef or Chicken Enchiladas",
-          "description": "Side dish may include rice or Salad",
-          "price": "$13.00 per person"
+          "description": "Side dish may include rice or Salad"
         },
         {
           "name": "Taco Salad, Beef, Chicken, or Chili",
-          "description": "Choice of tortilla strips, corn chips or nacho chips. Tortilla bowl $1 extra",
-          "price": "$13.00 per person"
+          "description": "Choice of tortilla strips, corn chips or nacho chips. Tortilla bowl $1 extra"
         },
         {
           "name": "Salad and Sandwiches",
-          "description": "Salad and Sandwich choices available",
-          "price": "$10.00 per person"
+          "description": "Salad and Sandwich choices available"
         },
         {
           "name": "Homemade Burgers or Grilled Chicken Burgers",
-          "description": "Served with toppings, veggie platter or choice of salad. Make it a burger bar with sauteed onions, mushrooms and bacon for $15 per person",
-          "price": "$13.00 per person"
+          "description": "Served with toppings, veggie platter or choice of salad. Make it a burger bar with sauteed onions, mushrooms and bacon for $15 per person"
         },
         {
           "name": "Chicken Quesadilla",
-          "description": "Made with assorted peppers and onions. Comes with a choice of salad",
-          "price": "$12.00 per person"
+          "description": "Made with assorted peppers and onions. Comes with a choice of salad"
         },
         {
           "name": "Thai Lettuce Wraps",
-          "description": "Chicken, bell peppers, cabbage, chow mein, green onions, cucumber, carrots and schewan sauce",
-          "price": "$12.00 per person"
+          "description": "Chicken, bell peppers, cabbage, chow mein, green onions, cucumber, carrots and schewan sauce"
         },
         {
           "name": "Taco Bar",
-          "description": "Soft & Hard Taco shells. Refried or black beans, peppers, cucumbers, guacamole, cheese, salsa",
-          "price": "$14.00 per person"
+          "description": "Soft & Hard Taco shells. Refried or black beans, peppers, cucumbers, guacamole, cheese, salsa"
         },
         {
           "name": "Roast Beef on a Bun",
-          "description": "Side dish may include baked beans and salad or 2 salads",
-          "price": "$15.00 per person"
+          "description": "Side dish may include baked beans and salad or 2 salads"
         },
         {
           "name": "Hot Ham Lunch",
-          "description": "Served with scalloped or cheesy potatoes and salad",
-          "price": "$13.50 per person"
+          "description": "Served with scalloped or cheesy potatoes and salad"
         },
         {
           "name": "Fettuccine Alfredo with Chicken or Shrimp",
-          "description": "Side dish includes a salad",
-          "price": "$14.50 per person"
+          "description": "Side dish includes a salad"
         },
         {
           "name": "Cabbage Rolls, Perogies and Sausages",
-          "description": "Served with sour cream, sauteed onions and bacon",
-          "price": "$15.00 per person"
+          "description": "Served with sour cream, sauteed onions and bacon"
         },
         {
           "name": "BBQ Chicken Breast or Herb Crusted Chicken",
-          "description": "Side dish may include 2 Salads or potato and salad",
-          "price": "$14.50 per person"
+          "description": "Side dish may include 2 Salads or potato and salad"
         },
         {
           "name": "Lasagna",
-          "description": "Side dish may include salad and buns",
-          "price": "$14.00 per person"
+          "description": "Side dish may include salad and buns"
         },
         {
           "name": "Stuffed Chicken Breast Lunch",
-          "description": "Side dish may include rice or scallop potato and salad or veggie",
-          "price": "$15.00 per person"
+          "description": "Side dish may include rice or scallop potato and salad or veggie"
         },
         {
           "name": "Buddha Bowl",
-          "description": "Quinoa or rice, sweet potato, beans or chick peas, avocado, tomato, sauteed onions and mushrooms broccollini",
-          "price": "$14.00 per person"
+          "description": "Quinoa or rice, sweet potato, beans or chick peas, avocado, tomato, sauteed onions and mushrooms broccollini"
         },
         {
           "name": "Beef Stew or Beef Stroganoff",
-          "description": "Comes with salad and buns or biscuits",
-          "price": "$14.00 per person"
+          "description": "Comes with salad and buns or biscuits"
         },
         {
           "name": "Meatloaf with Mushrooms or BBQ Sauce",
-          "description": "Comes with choice of potatoes and salad",
-          "price": "$14.50 per person"
+          "description": "Comes with choice of potatoes and salad"
         },
         {
           "name": "Quiche Lorraine or Florentine",
-          "description": "Comes with salad, fruit or veggies and dip",
-          "price": "$12.00 per person"
+          "description": "Comes with salad, fruit or veggies and dip"
         },
         {
           "name": "Chicken Broccoli & Cheese Crepes",
-          "description": "Comes with a salad",
-          "price": "$12.00 per person"
+          "description": "Comes with a salad"
         },
         {
           "name": "Chicken Cacciatore",
-          "description": "Comes with choice of pasta, rice or creamy polenta",
-          "price": "$15.00 per person"
+          "description": "Comes with choice of pasta, rice or creamy polenta"
         },
         {
           "name": "On the Go Lunch Bag or Box",
-          "description": "Sandwich, fresh fruit cup, salad, cookie or square, water bottle, napkin, fork",
-          "price": "$12.00 per person"
+          "description": "Sandwich, fresh fruit cup, salad, cookie or square, water bottle, napkin, fork"
         }
       ],
       "addOns": [
         {
           "name": "Add Dessert",
-          "description": "Choice of dessert or variety of squares and cookies",
-          "price": "$2-$3 per person"
+          "description": "Choice of dessert or variety of squares and cookies"
         },
         {
           "name": "Add the Dessert Buffet",
-          "description": "Includes 3 to 8 desserts of your choice. Min 20 people",
-          "price": "$7.00 per person"
+          "description": "Includes 3 to 8 desserts of your choice. Min 20 people"
         },
         {
           "name": "Add Juice or Coffee and Tea",
-          "description": "Includes cups, creamers, sugar and stir sticks",
-          "price": "$2.00 per person"
+          "description": "Includes cups, creamers, sugar and stir sticks"
         },
         {
           "name": "Disposable Dishware",
-          "description": "Complete disposable serviceware",
-          "price": "$0.75 per person"
+          "description": "Complete disposable serviceware"
         }
       ]
     },
@@ -326,62 +266,50 @@
       "id": "dinner",
       "name": "Dinner",
       "description": "Elegant evening meals for special occasions",
-      "pricingNote": "Prices are based on Buffet Style. There is an additional charge for Plated Service or disposable dishes. Prices subject to change without notice.",
       "items": [
         {
           "name": "Ham with Warm Pineapple Sauce",
-          "description": "Side dishes may include: Dinner Rolls, Creamy scalloped or cheesy potatoes, Choice of Veggie and Salad, Cake Buffet",
-          "price": "$16.00 per person"
+          "description": "Side dishes may include: Dinner Rolls, Creamy scalloped or cheesy potatoes, Choice of Veggie and Salad, Cake Buffet"
         },
         {
           "name": "Roasted Pork Loin",
-          "description": "Side dishes may include: Dinner Rolls, Choice of rice or potato, Apple sauce, Choice of Veggie, Choice of Salad, Choice of Dessert",
-          "price": "$16.00 per person"
+          "description": "Side dishes may include: Dinner Rolls, Choice of rice or potato, Apple sauce, Choice of Veggie, Choice of Salad, Choice of Dessert"
         },
         {
           "name": "Chicken or Beef Enchiladas",
-          "description": "Side dishes may include: Choice of Potato or Rice, Nachos with layered Dip, Choice of salad, Ice cream with warm caramel or chocolate sauce and a cinnamon wedge",
-          "price": "$16.50 per person"
+          "description": "Side dishes may include: Choice of Potato or Rice, Nachos with layered Dip, Choice of salad, Ice cream with warm caramel or chocolate sauce and a cinnamon wedge"
         },
         {
           "name": "Tuscan Chicken",
-          "description": "Stuffed with sundried tomatoes, spinach and provolone cheese and then baked in a creamy italian sauce. Side dishes may include: Choice of bread, Choice of veggie, Choice of salad, Choice of rice or potato, Sticky toffee pudding or cinnabun bread pudding with sweet cream sauce",
-          "price": "$18.00 per person"
+          "description": "Stuffed with sundried tomatoes, spinach and provolone cheese and then baked in a creamy italian sauce. Side dishes may include: Choice of bread, Choice of veggie, Choice of salad, Choice of rice or potato, Sticky toffee pudding or cinnabun bread pudding with sweet cream sauce"
         },
         {
           "name": "Cowboy Feast - Beef on a Bun",
-          "description": "Side dishes may include: Beef on a bun - pulled or sliced in an au jus horseradish, Baked Beans, Baked Potatoes with sour cream, chives and real bacon bits, Corn, Choice of Salad, Kim's Warm Apple Crisp with Ice cream",
-          "price": "$20.00 per person"
+          "description": "Side dishes may include: Beef on a bun - pulled or sliced in an au jus horseradish, Baked Beans, Baked Potatoes with sour cream, chives and real bacon bits, Corn, Choice of Salad, Kim's Warm Apple Crisp with Ice cream"
         },
         {
           "name": "Lasagna",
-          "description": "Side dishes may include: Choice of Homemade Buns or Garlic Bread, Choice of 2 Salads, Whipped Cheesecake with raspberry or blueberry toppings",
-          "price": "$17.00 per person"
+          "description": "Side dishes may include: Choice of Homemade Buns or Garlic Bread, Choice of 2 Salads, Whipped Cheesecake with raspberry or blueberry toppings"
         },
         {
           "name": "Barb-B-Que Chicken Breast Or Herb Crusted Parmesan Chicken",
-          "description": "Side dishes may include: Homemade buns or rolls, Oven roasted potatoes, Seasonal veggies, Choice or Salad, Ice cream with warm Callebaut chocolate sauce and homemade cinnamon buns and butter horns",
-          "price": "$18.00 per person"
+          "description": "Side dishes may include: Homemade buns or rolls, Oven roasted potatoes, Seasonal veggies, Choice or Salad, Ice cream with warm Callebaut chocolate sauce and homemade cinnamon buns and butter horns"
         },
         {
           "name": "Roast Beef - Seasoned Inside Round Roast",
-          "description": "Side dishes may include: Buns or rolls, Mashed Potatoes and Gravy, Baby Carrots with butter and dill, Creamy Horseradish sauce, Choice of salad, Homemade tarts, squares, and cookies (more than 15 varieties to choose from)",
-          "price": "$22.00 per person"
+          "description": "Side dishes may include: Buns or rolls, Mashed Potatoes and Gravy, Baby Carrots with butter and dill, Creamy Horseradish sauce, Choice of salad, Homemade tarts, squares, and cookies (more than 15 varieties to choose from)"
         },
         {
           "name": "Stuffed Chicken Breasts or Chicken Cordon Bleu",
-          "description": "Side dishes may include: Choice of salad and buns, Homemade cranberry sauce, Scalloped Potatoes or roasted baby potatoes, Steamed broccoli with cheese sauce, Frozen Strawberry and Lemon Freeze",
-          "price": "$20.00 per person"
+          "description": "Side dishes may include: Choice of salad and buns, Homemade cranberry sauce, Scalloped Potatoes or roasted baby potatoes, Steamed broccoli with cheese sauce, Frozen Strawberry and Lemon Freeze"
         },
         {
           "name": "Turkey with all the trimmings",
-          "description": "Side dishes may include: Buns or rolls, Sweet maple yams, Choice of salad, Creamy Mashed potatoes and gravy, Homemade stuffing and cranberries, Green beans with mushroom sauce or Peas in a white sauce, Choice of pies - chocolate custard, banana cream, double-decker key lime, apple, bumble berry pie, blueberry, pumpkin, coconut, peach and flapper",
-          "price": "$23.00 per person"
+          "description": "Side dishes may include: Buns or rolls, Sweet maple yams, Choice of salad, Creamy Mashed potatoes and gravy, Homemade stuffing and cranberries, Green beans with mushroom sauce or Peas in a white sauce, Choice of pies - chocolate custard, banana cream, double-decker key lime, apple, bumble berry pie, blueberry, pumpkin, coconut, peach and flapper"
         },
         {
           "name": "Appetizer Party",
-          "description": "Variety of appetizers and finger foods",
-          "price": "$18-$30 per person (depending on # of people and # of choices)"
+          "description": "Variety of appetizers and finger foods"
         }
       ]
     },
@@ -392,23 +320,19 @@
       "items": [
         {
           "name": "Homemade Pies",
-          "description": "Apple, cherry, pumpkin, and seasonal fruit pies made with real cream",
-          "price": "Contact for pricing"
+          "description": "Apple, cherry, pumpkin, and seasonal fruit pies made with real cream"
         },
         {
           "name": "Fresh Buns",
-          "description": "Warm, soft dinner buns baked fresh daily",
-          "price": "Contact for pricing"
+          "description": "Warm, soft dinner buns baked fresh daily"
         },
         {
           "name": "Butter Horns",
-          "description": "Flaky, buttery pastries perfect with coffee or tea",
-          "price": "Contact for pricing"
+          "description": "Flaky, buttery pastries perfect with coffee or tea"
         },
         {
           "name": "Artisan Breads",
-          "description": "Fresh-baked breads made with traditional methods",
-          "price": "Contact for pricing"
+          "description": "Fresh-baked breads made with traditional methods"
         }
       ]
     },
@@ -419,23 +343,19 @@
       "items": [
         {
           "name": "Wedding Cakes",
-          "description": "Elegant wedding cakes made with Callebaut chocolate and real cream",
-          "price": "Contact for pricing"
+          "description": "Elegant wedding cakes made with Callebaut chocolate and real cream"
         },
         {
           "name": "Birthday Cakes",
-          "description": "Custom birthday cakes for any celebration",
-          "price": "Contact for pricing"
+          "description": "Custom birthday cakes for any celebration"
         },
         {
           "name": "Celebration Cakes",
-          "description": "Special occasion cakes made to order",
-          "price": "Contact for pricing"
+          "description": "Special occasion cakes made to order"
         },
         {
           "name": "Custom Cakes",
-          "description": "Any design or flavor you can imagine",
-          "price": "Contact for pricing"
+          "description": "Any design or flavor you can imagine"
         }
       ]
     },
@@ -446,50 +366,42 @@
       "items": [
         {
           "name": "Dessert Bar",
-          "description": "Assortment of homemade squares, cookies, and treats",
-          "price": "Contact for pricing"
+          "description": "Assortment of homemade squares, cookies, and treats"
         },
         {
           "name": "Dessert Buffet",
-          "description": "Full dessert spread with variety of homemade goodies",
-          "price": "Contact for pricing"
+          "description": "Full dessert spread with variety of homemade goodies"
         },
         {
           "name": "Cookie Tray",
-          "description": "Selection of homemade cookies and squares",
-          "price": "Contact for pricing"
+          "description": "Selection of homemade cookies and squares"
         },
         {
           "name": "Chocolate Treats",
-          "description": "Handcrafted chocolates made with Callebaut chocolate",
-          "price": "Contact for pricing"
+          "description": "Handcrafted chocolates made with Callebaut chocolate"
         }
       ]
     },
     {
       "id": "Catering-menus",
-      "name": "Catering Menus",
+      "name": "Katering Menus",
       "description": "Complete meal solutions for your special events",
       "items": [
         {
           "name": "Wedding Menus",
-          "description": "Complete wedding Catering packages",
-          "price": "Contact for pricing"
+          "description": "Complete wedding Katering packages"
         },
         {
           "name": "Corporate Lunches",
-          "description": "Professional Catering for business events",
-          "price": "Contact for pricing"
+          "description": "Professional Katering for business events"
         },
         {
           "name": "Special Events",
-          "description": "Custom menus for birthdays, anniversaries, and celebrations",
-          "price": "Contact for pricing"
+          "description": "Custom menus for birthdays, anniversaries, and celebrations"
         },
         {
           "name": "Funeral Services",
-          "description": "Respectful Catering for funeral and celebration of life services",
-          "price": "Contact for pricing"
+          "description": "Respectful Katering for funeral and celebration of life services"
         }
       ]
     },
@@ -500,23 +412,19 @@
       "items": [
         {
           "name": "Event Planning Consultation",
-          "description": "Sit down with Kim to plan your perfect event",
-          "price": "Free consultation"
+          "description": "Sit down with Kim to plan your perfect event"
         },
         {
           "name": "Menu Customization",
-          "description": "Custom menu planning tailored to your needs",
-          "price": "Included with Catering"
+          "description": "Custom menu planning tailored to your needs"
         },
         {
           "name": "Special Dietary Needs",
-          "description": "Accommodations for allergies and dietary restrictions",
-          "price": "Included with Catering"
+          "description": "Accommodations for allergies and dietary restrictions"
         },
         {
           "name": "Event Coordination",
-          "description": "Full service event coordination and setup",
-          "price": "Contact for pricing"
+          "description": "Full service event coordination and setup"
         }
       ]
     }
