@@ -157,12 +157,17 @@ export const EMAIL_TEMPLATES = {
           ` : ''}
 
           <!-- Message -->
+          ${data.message || data.hasMenuSelections ? `
           <div style="background-color: ${EMAIL_CONFIG.secondaryColor}; padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 1px solid ${EMAIL_CONFIG.lightColor}; position: relative;">
             <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, ${EMAIL_CONFIG.primaryColor}, ${EMAIL_CONFIG.accentColor}); border-radius: 12px 0 0 12px;"></div>
             <h3 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 20px 0; font-size: 22px; font-weight: 600; font-family: 'Playfair Display', serif;">
               ${data.hasMenuSelections ? 'Menu Quote Request' : 'Message'}
             </h3>
+            ${data.message ? `
             <div style="color: ${EMAIL_CONFIG.mutedColor}; line-height: 1.7; white-space: pre-wrap; font-size: 16px; background-color: white; padding: 20px; border-radius: 8px; border: 1px solid ${EMAIL_CONFIG.lightColor};">${data.message}</div>
+            ` : data.hasMenuSelections ? `
+            <div style="color: ${EMAIL_CONFIG.mutedColor}; line-height: 1.7; font-size: 16px; background-color: white; padding: 20px; border-radius: 8px; border: 1px solid ${EMAIL_CONFIG.lightColor}; font-style: italic;">Custom quote request with selected menu items.</div>
+            ` : ''}
             ${data.hasMenuSelections && data.selectedItems && data.selectedItems.length > 0 ? `
               <div style="margin-top: 20px;">
                 <h4 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 15px 0; font-size: 18px; font-weight: 600; font-family: 'Playfair Display', serif;">
@@ -200,6 +205,7 @@ export const EMAIL_TEMPLATES = {
               </div>
             ` : ''}
           </div>
+          ` : ''}
 
           <!-- Action Button -->
           <div style="text-align: center; margin: 40px 0;">

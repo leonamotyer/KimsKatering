@@ -222,7 +222,7 @@ function CustomQuoteForm() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-[var(--foreground)] mb-2">
-                      Phone Number
+                      Phone Number *
                     </label>
                     <input
                       type="tel"
@@ -230,6 +230,7 @@ function CustomQuoteForm() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
+                      required
                       className="w-full px-4 py-2 border border-[var(--baguette-light)] rounded-md focus:ring-2 focus:ring-[var(--baguette-primary)] focus:border-transparent bg-[var(--background)] text-[var(--foreground)]"
                     />
                   </div>

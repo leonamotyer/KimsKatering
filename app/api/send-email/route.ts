@@ -42,11 +42,11 @@ export async function POST(request: NextRequest) {
     console.log('🍽️ Has menu selections:', hasMenuSelections);
     console.log('📋 Selected items:', selectedItems);
 
-    // Validate required fields
-    if (!name || !email || !message) {
-      console.log('❌ Validation failed - missing required fields:', { name: !!name, email: !!email, message: !!message });
+    // Validate required fields - only name, email, and phone are required
+    if (!name || !email || !phone) {
+      console.log('❌ Validation failed - missing required fields:', { name: !!name, email: !!email, phone: !!phone });
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+        { error: 'Name, email, and phone number are required.' },
         { status: 400 }
       );
     }
@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
         guestCount,
         eventBudget,
         dietaryRestrictions,
-        message,
+        message: message || '',
         hasMenuSelections,
         selectedItems
       }),
