@@ -96,7 +96,7 @@ export default function RootLayout({
         "description": "Professional Katering services in Strathmore, Alberta specializing in weddings, corporate events, funerals, and special occasions.",
         "url": "https://kims-Katering.vercel.app",
         "telephone": "403-497-9338",
-        "email": "kim@kimsKatering.ca",
+        "email": "info@kimsKatering.ca",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Bay #1 - 70 Slater Rd",

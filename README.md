@@ -130,7 +130,7 @@ The website uses a custom golden brown baguette color scheme:
 ## 📞 Contact Information
 
 - **Phone**: 403-497-9338
-- **Email**: kim@kimsKatering.ca
+- **Email**: info@kimsKatering.ca
 - **Location**: Bay #1 - 70 Slater Rd, Strathmore, Alberta
 
 ## 🚀 Deployment

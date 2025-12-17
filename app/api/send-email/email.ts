@@ -5,7 +5,7 @@ export const EMAIL_CONFIG = {
   fromName: process.env.FROM_NAME || 'Kim\'s Katering',
   
   // Recipients
-  kimEmail: process.env.CONTACT_DEFAULT_TO || 'rlmotyer@gmail.com',
+  kimEmail: process.env.CONTACT_DEFAULT_TO || 'kimskateringstrathmore@gmail.com',
   
   // Brand colors (using CSS global variables)
   primaryColor: 'var(--baguette-dark)', // Main brown from website

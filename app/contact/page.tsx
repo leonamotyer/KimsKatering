@@ -151,7 +151,7 @@ function ContactForm() {
             {/* Email Contact */}
             <div className="text-center">
               <a 
-                href="mailto:kim@kimsCatering.ca" 
+                href="mailto:info@kimsCatering.ca" 
                 className="w-16 h-16 bg-white rounded-full mx-auto mb-6 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow cursor-pointer"
               >
                 <svg className="w-8 h-8 text-[var(--baguette-light)] hover:text-[var(--baguette-primary)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,10 +160,10 @@ function ContactForm() {
               </a>
               <h3 className="text-xl font-medium text-[var(--baguette-dark)] mb-4">Send an Email</h3>
               <a 
-                href="mailto:kim@kimsCatering.ca" 
+                href="mailto:info@kimsCatering.ca" 
                 className="text-lg font-light text-[var(--baguette-muted)] hover:text-[var(--baguette-dark)] transition-colors block mb-2"
               >
-                kim@kimsCatering.ca
+                info@kimsCatering.ca
               </a>
               <p className="text-sm text-[var(--baguette-muted)]">We&apos;ll respond within 24 hours</p>
             </div>
