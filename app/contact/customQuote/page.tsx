@@ -106,6 +106,14 @@ function CustomQuoteForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate that either message or selected items are provided
+    if (!formData.message.trim() && selectedItems.length === 0) {
+      setSubmitStatus('error');
+      alert('Please provide additional details about your event or select at least one menu item.');
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -139,6 +147,10 @@ function CustomQuoteForm() {
         setSelectedItems([]);
       } else {
         setSubmitStatus('error');
+        const result = await response.json();
+        if (result.error) {
+          alert(result.error + (result.details ? ': ' + result.details : ''));
+        }
       }
     } catch (error) {
       console.error('Error sending email:', error);

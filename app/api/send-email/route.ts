@@ -2,8 +2,6 @@ import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 import { EMAIL_CONFIG, EMAIL_TEMPLATES } from './email';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
   console.log('📧 Email API route called');
   
@@ -51,11 +49,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log('✅ Validation passed for:', { name, email, eventType });
+    // Validate that either message or selected items are provided
+    const hasMessage = message && message.trim().length > 0;
+    const hasSelectedItems = hasMenuSelections && selectedItems.length > 0;
+    
+    if (!hasMessage && !hasSelectedItems) {
+      console.log('❌ Validation failed - no message or selected items:', { hasMessage, hasSelectedItems, selectedItemsCount: selectedItems.length });
+      return NextResponse.json(
+        { error: 'Please provide additional details about your event or select at least one menu item.' },
+        { status: 400 }
+      );
+    }
+
+    console.log('✅ Validation passed for:', { name, email, eventType, hasMessage, hasSelectedItems });
 
     // Check Resend API key
-    if (!process.env.RESEND_API_KEY) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
       console.error('❌ RESEND_API_KEY is missing!');
+      console.error('❌ Available env vars:', Object.keys(process.env).filter(k => k.includes('RESEND') || k.includes('EMAIL')));
       return NextResponse.json(
         { 
           error: 'Email service is not configured. Please contact the administrator.',
@@ -66,7 +78,10 @@ export async function POST(request: NextRequest) {
     }
     
     console.log('🔑 Resend API Key status: Present');
-    console.log('🔑 API Key preview:', `${process.env.RESEND_API_KEY.substring(0, 10)}...`);
+    console.log('🔑 API Key preview:', apiKey ? `${apiKey.substring(0, 10)}...` : 'NOT SET');
+    
+    // Re-initialize Resend with the API key to ensure it's fresh
+    const resend = new Resend(apiKey);
 
     // Send email to Kim
     console.log('📤 Sending email to Kim...');
@@ -154,10 +169,30 @@ export async function POST(request: NextRequest) {
       fullError: JSON.stringify(error, Object.getOwnPropertyNames(error))
     });
     
+    // Check if it's a Resend-specific error
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    let errorDetails = errorMessage;
+    
+    // Try to extract more details from the error
+    if (error && typeof error === 'object') {
+      const errorObj = error as any;
+      if (errorObj.response) {
+        errorDetails = `Resend API Error: ${JSON.stringify(errorObj.response)}`;
+      } else if (errorObj.message) {
+        errorDetails = errorObj.message;
+      }
+    }
+    
     const errorResponse = { 
       error: 'Failed to send email',
-      details: error instanceof Error ? error.message : 'Unknown error',
-      type: error instanceof Error ? error.name : 'Unknown'
+      details: errorDetails,
+      type: error instanceof Error ? error.name : 'Unknown',
+      // Include environment check info for debugging
+      envCheck: {
+        hasApiKey: !!process.env.RESEND_API_KEY,
+        nodeEnv: process.env.NODE_ENV,
+        vercelEnv: process.env.VERCEL_ENV
+      }
     };
     
     console.error('❌ Error response:', JSON.stringify(errorResponse, null, 2));

@@ -7,15 +7,15 @@ export const EMAIL_CONFIG = {
   // Recipients
   kimEmail: process.env.CONTACT_DEFAULT_TO || 'kimskateringstrathmore@gmail.com',
   
-  // Brand colors (using CSS global variables)
-  primaryColor: 'var(--baguette-dark)', // Main brown from website
-  secondaryColor: 'var(--background)', // Background cream
-  accentColor: 'var(--baguette-primary)', // Baguette primary
-  lightColor: 'var(--baguette-light)', // Baguette light
-  mediumColor: 'var(--baguette-medium)', // Baguette medium
-  darkColor: 'var(--foreground)', // Foreground dark brown
-  mutedColor: 'var(--muted-text)', // Muted text
-  subtleColor: 'var(--muted-subtle)', // Muted subtle
+  // Brand colors (using actual hex values for email compatibility)
+  primaryColor: '#9d7f5a', // Main brown from website (--baguette-dark)
+  secondaryColor: '#fefcf8', // Background cream (--background)
+  accentColor: '#c4a882', // Baguette primary (--baguette-primary)
+  lightColor: '#e2d4b8', // Baguette light (--baguette-light)
+  mediumColor: '#b89a6f', // Baguette medium (--baguette-medium)
+  darkColor: '#3c2e1f', // Foreground dark brown (--foreground)
+  mutedColor: '#8b7d6b', // Muted text (--muted-text)
+  subtleColor: '#d1c7b5', // Muted subtle (--muted-subtle)
   
   // Company info
   companyName: 'Kim\'s Katering',
