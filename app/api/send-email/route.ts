@@ -54,11 +54,28 @@ export async function POST(request: NextRequest) {
     console.log('✅ Validation passed for:', { name, email, eventType });
 
     // Check Resend API key
-    console.log('🔑 Resend API Key status:', process.env.RESEND_API_KEY ? 'Present' : 'Missing');
-    console.log('🔑 API Key preview:', process.env.RESEND_API_KEY ? `${process.env.RESEND_API_KEY.substring(0, 10)}...` : 'Not found');
+    if (!process.env.RESEND_API_KEY) {
+      console.error('❌ RESEND_API_KEY is missing!');
+      return NextResponse.json(
+        { 
+          error: 'Email service is not configured. Please contact the administrator.',
+          details: 'RESEND_API_KEY environment variable is missing'
+        },
+        { status: 500 }
+      );
+    }
+    
+    console.log('🔑 Resend API Key status: Present');
+    console.log('🔑 API Key preview:', `${process.env.RESEND_API_KEY.substring(0, 10)}...`);
 
     // Send email to Kim
     console.log('📤 Sending email to Kim...');
+    console.log('📧 From:', `${EMAIL_CONFIG.fromName} <${EMAIL_CONFIG.fromEmail}>`);
+    console.log('📧 To:', EMAIL_CONFIG.kimEmail);
+    console.log('📧 Environment:', process.env.NODE_ENV || 'unknown');
+    console.log('📧 FROM_EMAIL env:', process.env.FROM_EMAIL || 'not set (using default)');
+    console.log('📧 CONTACT_DEFAULT_TO env:', process.env.CONTACT_DEFAULT_TO || 'not set (using default)');
+    
     const emailToKim = await resend.emails.send({
       from: `${EMAIL_CONFIG.fromName} <${EMAIL_CONFIG.fromEmail}>`,
       to: EMAIL_CONFIG.kimEmail,
@@ -78,7 +95,22 @@ export async function POST(request: NextRequest) {
       }),
     });
 
-    console.log('📧 Email to Kim result:', emailToKim);
+    console.log('📧 Email to Kim result:', JSON.stringify(emailToKim, null, 2));
+    
+    if (emailToKim.error) {
+      console.error('❌ Resend API error:', JSON.stringify(emailToKim.error, null, 2));
+      return NextResponse.json(
+        { 
+          error: 'Failed to send email',
+          details: emailToKim.error.message || JSON.stringify(emailToKim.error),
+          errorType: emailToKim.error.name || 'Unknown',
+          errorCode: (emailToKim.error as any)?.statusCode || 'Unknown',
+          fullError: JSON.stringify(emailToKim.error)
+        },
+        { status: 500 }
+      );
+    }
+    
     console.log('📧 Email to Kim ID:', emailToKim.data?.id);
 
     // Send confirmation email to customer
@@ -95,7 +127,13 @@ export async function POST(request: NextRequest) {
     });
 
     console.log('📧 Confirmation email result:', confirmationResult);
-    console.log('📧 Confirmation email ID:', confirmationResult.data?.id);
+    
+    if (confirmationResult.error) {
+      console.error('❌ Confirmation email error (non-fatal):', confirmationResult.error);
+      // Don't fail the whole request if confirmation email fails
+    } else {
+      console.log('📧 Confirmation email ID:', confirmationResult.data?.id);
+    }
 
     const response = {
       success: true, 
@@ -112,15 +150,17 @@ export async function POST(request: NextRequest) {
     console.error('❌ Error details:', {
       message: error instanceof Error ? error.message : 'Unknown error',
       stack: error instanceof Error ? error.stack : undefined,
-      name: error instanceof Error ? error.name : 'Unknown'
+      name: error instanceof Error ? error.name : 'Unknown',
+      fullError: JSON.stringify(error, Object.getOwnPropertyNames(error))
     });
     
     const errorResponse = { 
       error: 'Failed to send email',
-      details: error instanceof Error ? error.message : 'Unknown error'
+      details: error instanceof Error ? error.message : 'Unknown error',
+      type: error instanceof Error ? error.name : 'Unknown'
     };
     
-    console.error('❌ Error response:', errorResponse);
+    console.error('❌ Error response:', JSON.stringify(errorResponse, null, 2));
     return NextResponse.json(errorResponse, { status: 500 });
   }
 }

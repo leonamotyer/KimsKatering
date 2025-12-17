@@ -35,7 +35,7 @@ export default function Events() {
           categoryName: eventName,
           itemName: item.name,
           itemDescription: item.description,
-          itemPrice: item.price || 'Contact for pricing'
+          itemPrice: item.price || ''
         };
         return [...prev, selectedItem];
       }

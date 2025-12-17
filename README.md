@@ -135,12 +135,37 @@ The website uses a custom golden brown baguette color scheme:
 
 ## 🚀 Deployment
 
+### Environment Variables
+
+**IMPORTANT**: You must set the following environment variables in your deployment platform (Vercel, etc.) for email functionality to work:
+
+#### Required:
+- `RESEND_API_KEY` - Your Resend API key (get it from [resend.com](https://resend.com/api-keys))
+
+#### Optional:
+- `FROM_EMAIL` - Email address to send from (defaults to `onboarding@resend.dev`)
+- `FROM_NAME` - Name to display as sender (defaults to `Kim's Katering`)
+- `CONTACT_DEFAULT_TO` - Email address where contact form submissions are sent (defaults to `kimskateringstrathmore@gmail.com`)
+
+### Setting Environment Variables in Vercel:
+
+1. Go to your Vercel project dashboard
+2. Navigate to **Settings** → **Environment Variables**
+3. Add each variable:
+   - Click **Add New**
+   - Enter the variable name (e.g., `RESEND_API_KEY`)
+   - Enter the value
+   - Select the environments (Production, Preview, Development)
+   - Click **Save**
+4. **Redeploy** your application after adding variables
+
 ### Vercel (Recommended)
 The easiest way to deploy is using [Vercel](https://vercel.com/new):
 
 1. Push your code to GitHub
 2. Connect your repository to Vercel
-3. Deploy automatically
+3. **Set environment variables** (see above)
+4. Deploy automatically
 
 ### Other Platforms
 This Next.js app can be deployed to any platform that supports Node.js:
@@ -148,6 +173,8 @@ This Next.js app can be deployed to any platform that supports Node.js:
 - AWS Amplify
 - Railway
 - DigitalOcean App Platform
+
+**Note**: Make sure to set the environment variables in your chosen platform's settings.
 
 ## 🤝 Contributing
 

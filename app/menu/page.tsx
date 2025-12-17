@@ -38,7 +38,7 @@ export default function Menu() {
         categoryName,
         itemName: item.name,
         itemDescription: item.description,
-        itemPrice: item.price || 'Contact for pricing'
+        itemPrice: item.price || ''
       }]);
     }
   };

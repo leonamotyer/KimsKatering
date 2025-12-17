@@ -185,11 +185,13 @@ export const EMAIL_TEMPLATES = {
                             ${item.categoryName}
                           </p>
                         </div>
+                        ${item.itemPrice && item.itemPrice !== 'Contact for pricing' ? `
                         <div style="margin-left: 15px; text-align: right;">
                           <span style="font-size: 16px; font-weight: 600; color: ${EMAIL_CONFIG.accentColor};">
                             ${item.itemPrice}
                           </span>
                         </div>
+                        ` : ''}
                       </div>
                     </div>
                   `).join('')}
@@ -327,11 +329,13 @@ export const EMAIL_TEMPLATES = {
                         ${item.categoryName}
                       </p>
                     </div>
+                    ${item.itemPrice && item.itemPrice !== 'Contact for pricing' ? `
                     <div style="margin-left: 15px; text-align: right;">
                       <span style="font-size: 16px; font-weight: 600; color: ${EMAIL_CONFIG.accentColor};">
                         ${item.itemPrice}
                       </span>
                     </div>
+                    ` : ''}
                   </div>
                 </div>
               `).join('')}
