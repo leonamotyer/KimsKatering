@@ -4,6 +4,8 @@ A beautiful, responsive website for Kim's Katering - a local bakery and Katering
 
 ## 🍰 About Kim's Katering
 
+stage: kims-katering.vercel.app
+
 Kim's Katering has been serving the Strathmore community for over 9 years, specializing in homemade pies, fresh-baked buns, delicate butter horns, and custom cakes made with real cream and premium Callebaut chocolate. Located at Bay #1 - 70 Slater Rd, Strathmore, Alberta.
 
 ## ✨ Features

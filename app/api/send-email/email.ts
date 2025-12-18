@@ -5,7 +5,7 @@ export const EMAIL_CONFIG = {
   fromName: process.env.FROM_NAME || 'Kim\'s Katering',
   
   // Recipients
-  kimEmail: process.env.CONTACT_DEFAULT_TO || 'kimskateringstrathmore@gmail.com',
+  kimEmail: process.env.CONTACT_DEFAULT_TO || process.env.FROM_EMAIL || 'onboarding@resend.dev',
   
   // Brand colors (using actual hex values for email compatibility)
   primaryColor: '#9d7f5a', // Main brown from website (--baguette-dark)
@@ -21,7 +21,9 @@ export const EMAIL_CONFIG = {
   companyName: 'Kim\'s Katering',
   companyAddress: 'Bay #1 - 70 Slater Rd, Strathmore, Alberta',
   companyPhone: '403-497-9338',
-  website: 'kims-Catering.vercel.app'
+  website: 'kims-Catering.vercel.app',
+  websiteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kims-Catering.vercel.app',
+  logoUrl: (process.env.NEXT_PUBLIC_SITE_URL || 'https://kims-Catering.vercel.app') + '/logo.png'
 };
 
 // Email templates
@@ -54,9 +56,7 @@ export const EMAIL_TEMPLATES = {
         <!-- Header -->
         <div style="background: linear-gradient(135deg, ${EMAIL_CONFIG.primaryColor} 0%, ${EMAIL_CONFIG.mediumColor} 100%); padding: 40px 30px; text-align: center; position: relative;">
           <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, ${EMAIL_CONFIG.accentColor}, ${EMAIL_CONFIG.lightColor}, ${EMAIL_CONFIG.accentColor});"></div>
-          <h1 style="color: white; margin: 0; font-size: 32px; font-weight: 600; font-family: 'Playfair Display', serif; letter-spacing: 1px;">
-            ${EMAIL_CONFIG.companyName}
-          </h1>
+          <img src="${EMAIL_CONFIG.logoUrl}" alt="${EMAIL_CONFIG.companyName}" style="max-width: 120px; height: auto; margin: 0 auto 20px; display: block;" />
           <div style="width: 60px; height: 2px; background-color: ${EMAIL_CONFIG.lightColor}; margin: 15px auto;"></div>
           <p style="color: white; margin: 0; font-size: 16px; font-weight: 300; opacity: 0.9;">
             ${data.hasMenuSelections ? 'Menu Quote Request' : 'New Katering Inquiry'}
@@ -156,56 +156,60 @@ export const EMAIL_TEMPLATES = {
           </div>
           ` : ''}
 
-          <!-- Message -->
-          ${data.message || data.hasMenuSelections ? `
+          <!-- Additional Details / Message -->
+          ${data.message ? `
           <div style="background-color: ${EMAIL_CONFIG.secondaryColor}; padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 1px solid ${EMAIL_CONFIG.lightColor}; position: relative;">
             <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, ${EMAIL_CONFIG.primaryColor}, ${EMAIL_CONFIG.accentColor}); border-radius: 12px 0 0 12px;"></div>
             <h3 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 20px 0; font-size: 22px; font-weight: 600; font-family: 'Playfair Display', serif;">
-              ${data.hasMenuSelections ? 'Menu Quote Request' : 'Message'}
+              Additional Details
             </h3>
-            ${data.message ? `
             <div style="color: ${EMAIL_CONFIG.mutedColor}; line-height: 1.7; white-space: pre-wrap; font-size: 16px; background-color: white; padding: 20px; border-radius: 8px; border: 1px solid ${EMAIL_CONFIG.lightColor};">${data.message}</div>
-            ` : data.hasMenuSelections ? `
-            <div style="color: ${EMAIL_CONFIG.mutedColor}; line-height: 1.7; font-size: 16px; background-color: white; padding: 20px; border-radius: 8px; border: 1px solid ${EMAIL_CONFIG.lightColor}; font-style: italic;">Custom quote request with selected menu items.</div>
-            ` : ''}
-            ${data.hasMenuSelections && data.selectedItems && data.selectedItems.length > 0 ? `
-              <div style="margin-top: 20px;">
-                <h4 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 15px 0; font-size: 18px; font-weight: 600; font-family: 'Playfair Display', serif;">
-                  Selected Menu Items
-                </h4>
-                <div style="background-color: white; border-radius: 8px; border: 1px solid ${EMAIL_CONFIG.lightColor}; overflow: hidden;">
-                  ${data.selectedItems.map((item, index) => `
-                    <div style="padding: 15px 20px; ${index < (data.selectedItems?.length || 0) - 1 ? `border-bottom: 1px solid ${EMAIL_CONFIG.lightColor};` : ''}">
-                      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <div style="flex: 1;">
-                          <h5 style="margin: 0 0 5px 0; font-size: 16px; font-weight: 600; color: ${EMAIL_CONFIG.darkColor};">
-                            ${item.itemName}
-                          </h5>
-                          <p style="margin: 0 0 5px 0; font-size: 14px; color: ${EMAIL_CONFIG.mutedColor};">
-                            ${item.categoryName}
-                          </p>
-                        </div>
-                        ${item.itemPrice && item.itemPrice !== 'Contact for pricing' ? `
-                        <div style="margin-left: 15px; text-align: right;">
-                          <span style="font-size: 16px; font-weight: 600; color: ${EMAIL_CONFIG.accentColor};">
-                            ${item.itemPrice}
-                          </span>
-                        </div>
-                        ` : ''}
+          </div>
+          ` : ''}
+
+          <!-- Menu Quote Request Section -->
+          ${data.hasMenuSelections && data.selectedItems && data.selectedItems.length > 0 ? `
+          <div style="background-color: ${EMAIL_CONFIG.secondaryColor}; padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 1px solid ${EMAIL_CONFIG.lightColor}; position: relative;">
+            <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, ${EMAIL_CONFIG.accentColor}, ${EMAIL_CONFIG.lightColor}); border-radius: 12px 0 0 12px;"></div>
+            <h3 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 20px 0; font-size: 22px; font-weight: 600; font-family: 'Playfair Display', serif;">
+              Menu Quote Request
+            </h3>
+            <div>
+              <h4 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 15px 0; font-size: 18px; font-weight: 600; font-family: 'Playfair Display', serif;">
+                Selected Menu Items
+              </h4>
+              <div style="background-color: white; border-radius: 8px; border: 1px solid ${EMAIL_CONFIG.lightColor}; overflow: hidden;">
+                ${data.selectedItems.map((item, index) => `
+                  <div style="padding: 15px 20px; ${index < (data.selectedItems?.length || 0) - 1 ? `border-bottom: 1px solid ${EMAIL_CONFIG.lightColor};` : ''}">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                      <div style="flex: 1;">
+                        <h5 style="margin: 0 0 5px 0; font-size: 16px; font-weight: 600; color: ${EMAIL_CONFIG.darkColor};">
+                          ${item.itemName}
+                        </h5>
+                        <p style="margin: 0 0 5px 0; font-size: 14px; color: ${EMAIL_CONFIG.mutedColor};">
+                          ${item.categoryName}
+                        </p>
                       </div>
+                      ${item.itemPrice && item.itemPrice !== 'Contact for pricing' ? `
+                      <div style="margin-left: 15px; text-align: right;">
+                        <span style="font-size: 16px; font-weight: 600; color: ${EMAIL_CONFIG.accentColor};">
+                          ${item.itemPrice}
+                        </span>
+                      </div>
+                      ` : ''}
                     </div>
-                  `).join('')}
-                </div>
-                <div style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, ${EMAIL_CONFIG.accentColor}20, ${EMAIL_CONFIG.lightColor}20); border-radius: 8px; border: 2px solid ${EMAIL_CONFIG.accentColor};">
-                  <div style="display: flex; align-items: center;">
-                    <div style="width: 12px; height: 12px; background-color: ${EMAIL_CONFIG.accentColor}; border-radius: 50%; margin-right: 12px;"></div>
-                    <p style="margin: 0; font-weight: 600; color: ${EMAIL_CONFIG.darkColor}; font-size: 14px;">
-                      Customer has selected ${data.selectedItems?.length || 0} item${(data.selectedItems?.length || 0) !== 1 ? 's' : ''} for their quote request!
-                    </p>
                   </div>
+                `).join('')}
+              </div>
+              <div style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, ${EMAIL_CONFIG.accentColor}20, ${EMAIL_CONFIG.lightColor}20); border-radius: 8px; border: 2px solid ${EMAIL_CONFIG.accentColor};">
+                <div style="display: flex; align-items: center;">
+                  <div style="width: 12px; height: 12px; background-color: ${EMAIL_CONFIG.accentColor}; border-radius: 50%; margin-right: 12px;"></div>
+                  <p style="margin: 0; font-weight: 600; color: ${EMAIL_CONFIG.darkColor}; font-size: 14px;">
+                    Customer has selected ${data.selectedItems?.length || 0} item${(data.selectedItems?.length || 0) !== 1 ? 's' : ''} for their quote request!
+                  </p>
                 </div>
               </div>
-            ` : ''}
+            </div>
           </div>
           ` : ''}
 
@@ -263,9 +267,7 @@ export const EMAIL_TEMPLATES = {
         <!-- Header -->
         <div style="background: linear-gradient(135deg, ${EMAIL_CONFIG.primaryColor} 0%, ${EMAIL_CONFIG.mediumColor} 100%); padding: 40px 30px; text-align: center; position: relative;">
           <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, ${EMAIL_CONFIG.accentColor}, ${EMAIL_CONFIG.lightColor}, ${EMAIL_CONFIG.accentColor});"></div>
-          <h1 style="color: white; margin: 0; font-size: 32px; font-weight: 600; font-family: 'Playfair Display', serif; letter-spacing: 1px;">
-            ${EMAIL_CONFIG.companyName}
-          </h1>
+          <img src="${EMAIL_CONFIG.logoUrl}" alt="${EMAIL_CONFIG.companyName}" style="max-width: 120px; height: auto; margin: 0 auto 20px; display: block;" />
           <div style="width: 60px; height: 2px; background-color: ${EMAIL_CONFIG.lightColor}; margin: 15px auto;"></div>
           <p style="color: white; margin: 0; font-size: 16px; font-weight: 300; opacity: 0.9;">
             Thank You for Your Inquiry!
@@ -275,7 +277,7 @@ export const EMAIL_TEMPLATES = {
         <!-- Content -->
         <div style="padding: 40px 30px;">
           
-          <h2 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 25px 0; font-size: 28px; font-weight: 600; font-family: 'Playfair Display', serif;">Hi ${data.name}! 👋</h2>
+          <h2 style="color: ${EMAIL_CONFIG.darkColor}; margin: 0 0 25px 0; font-size: 28px; font-weight: 600; font-family: 'Playfair Display', serif;">Hi ${data.name}!</h2>
           
           <p style="color: ${EMAIL_CONFIG.mutedColor}; line-height: 1.7; margin-bottom: 30px; font-size: 16px;">
             Thank you for your interest in our katering services! We've received your inquiry and Kim will get back to you within 24 hours.
@@ -320,23 +322,12 @@ export const EMAIL_TEMPLATES = {
             <div style="background-color: white; border-radius: 8px; border: 1px solid ${EMAIL_CONFIG.lightColor}; overflow: hidden;">
               ${data.selectedItems.map((item, index) => `
                 <div style="padding: 15px 20px; ${index < (data.selectedItems?.length || 0) - 1 ? `border-bottom: 1px solid ${EMAIL_CONFIG.lightColor};` : ''}">
-                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                    <div style="flex: 1;">
-                      <h5 style="margin: 0 0 5px 0; font-size: 16px; font-weight: 600; color: ${EMAIL_CONFIG.darkColor};">
-                        ${item.itemName}
-                      </h5>
-                      <p style="margin: 0 0 5px 0; font-size: 14px; color: ${EMAIL_CONFIG.mutedColor};">
-                        ${item.categoryName}
-                      </p>
-                    </div>
-                    ${item.itemPrice && item.itemPrice !== 'Contact for pricing' ? `
-                    <div style="margin-left: 15px; text-align: right;">
-                      <span style="font-size: 16px; font-weight: 600; color: ${EMAIL_CONFIG.accentColor};">
-                        ${item.itemPrice}
-                      </span>
-                    </div>
-                    ` : ''}
-                  </div>
+                  <h5 style="margin: 0 0 5px 0; font-size: 16px; font-weight: 600; color: ${EMAIL_CONFIG.darkColor};">
+                    ${item.itemName}
+                  </h5>
+                  <p style="margin: 0; font-size: 14px; color: ${EMAIL_CONFIG.mutedColor};">
+                    ${item.categoryName}
+                  </p>
                 </div>
               `).join('')}
             </div>

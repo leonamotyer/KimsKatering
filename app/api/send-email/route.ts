@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
     const emailToKim = await resend.emails.send({
       from: `${EMAIL_CONFIG.fromName} <${EMAIL_CONFIG.fromEmail}>`,
       to: EMAIL_CONFIG.kimEmail,
-      subject: `${hasMenuSelections ? '🍽️ Menu Quote Request' : '🍽️ New Katering Inquiry'} from ${name}`,
+      subject: `${hasMenuSelections ? 'Menu Quote Request' : 'New Katering Inquiry'} from ${name}`,
       html: EMAIL_TEMPLATES.inquiryEmail({
         name,
         email,
