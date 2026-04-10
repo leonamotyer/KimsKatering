@@ -21,9 +21,9 @@ export const EMAIL_CONFIG = {
   companyName: 'Kim\'s Katering',
   companyAddress: 'Bay #1 - 70 Slater Rd, Strathmore, Alberta',
   companyPhone: '403-497-9338',
-  website: 'kims-Catering.vercel.app',
-  websiteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kims-Catering.vercel.app',
-  logoUrl: (process.env.NEXT_PUBLIC_SITE_URL || 'https://kims-Catering.vercel.app') + '/logo.png'
+  website: 'kims-katering.vercel.app',
+  websiteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kims-katering.vercel.app',
+  logoUrl: (process.env.NEXT_PUBLIC_SITE_URL || 'https://kims-katering.vercel.app') + '/logo.png'
 };
 
 // Email templates

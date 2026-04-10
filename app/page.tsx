@@ -158,7 +158,7 @@ export default function Home() {
             <a 
               href="/contact" 
               className="bg-[var(--baguette-dark)] text-white px-8 py-4 text-lg font-semibold hover:bg-[var(--baguette-medium)] transition-colors inline-block"
-              aria-label="Contact us for catering services"
+              aria-label="Contact us for katering services"
             >
               Contact Us
             </a>
