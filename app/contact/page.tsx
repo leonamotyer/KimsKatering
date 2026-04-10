@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import VictorianBorder from "../componenets/victorian-animation";
+import { ObfuscatedContactEmail } from "../componenets/obfuscated-contact-email";
 
 function ContactForm() {
   const searchParams = useSearchParams();
@@ -148,23 +149,20 @@ function ContactForm() {
               <p className="text-sm text-[var(--baguette-muted)]">Available for consultations and quotes</p>
             </div>
 
-            {/* Email Contact */}
+            {/* Email Contact — address assembled client-side to reduce static scraping */}
             <div className="text-center">
-              <a 
-                href="mailto:info@kimskatering.ca" 
-                className="w-16 h-16 bg-white rounded-full mx-auto mb-6 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-              >
-                <svg className="w-8 h-8 text-[var(--baguette-light)] hover:text-[var(--baguette-primary)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </a>
-              <h3 className="text-xl font-medium text-[var(--baguette-dark)] mb-4">Send an Email</h3>
-              <a 
-                href="mailto:info@kimskatering.ca" 
-                className="text-lg font-light text-[var(--baguette-muted)] hover:text-[var(--baguette-dark)] transition-colors block mb-2"
-              >
-                info@kimskatering.ca
-              </a>
+              <ObfuscatedContactEmail
+                betweenIconAndAddress={
+                  <h3 className="text-xl font-medium text-[var(--baguette-dark)] mb-4">Send an Email</h3>
+                }
+                iconWrapperClassName="w-16 h-16 bg-white rounded-full mx-auto mb-6 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                textLinkClassName="text-lg font-light text-[var(--baguette-muted)] hover:text-[var(--baguette-dark)] transition-colors block mb-2"
+                icon={
+                  <svg className="w-8 h-8 text-[var(--baguette-light)] hover:text-[var(--baguette-primary)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                }
+              />
               <p className="text-sm text-[var(--baguette-muted)]">We&apos;ll respond within 24 hours</p>
             </div>
           </div>
