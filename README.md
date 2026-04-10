@@ -128,6 +128,8 @@ The website uses a custom golden brown baguette color scheme:
 - `npm run build` - Build for production with Turbopack
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+- `npm test` - Run tests in watch mode
+- `npm run test:run` - Run tests once
 
 ## 📞 Contact Information
 
@@ -177,6 +179,36 @@ This Next.js app can be deployed to any platform that supports Node.js:
 - DigitalOcean App Platform
 
 **Note**: Make sure to set the environment variables in your chosen platform's settings.
+
+## 🧪 Testing
+
+The project includes integration tests for the email service to ensure emails are sent correctly.
+
+### Running Tests
+
+1. **Unit Tests (Mocked)**: Run tests with mocked Resend API (fast, no actual emails sent)
+   ```bash
+   npm test
+   ```
+
+2. **Integration Tests (Real Emails)**: Run tests that actually send emails to test addresses
+   ```bash
+   # Set test environment variables first
+   export TEST_EMAIL_TO=your-test-email@example.com
+   export TEST_EMAIL_CUSTOMER=test-customer@example.com
+   export RESEND_API_KEY=your_resend_api_key
+   
+   npm test -- route.integration.test.ts
+   ```
+
+### Test Environment Variables
+
+For integration tests that actually send emails, set these environment variables:
+- `TEST_EMAIL_TO` - Test email address to receive inquiry emails (instead of real client email)
+- `TEST_EMAIL_CUSTOMER` - Test email address for customer confirmation emails
+- `RESEND_API_KEY` - Your Resend API key
+
+**Important**: Always use test email addresses, never the production client email address!
 
 ## 🤝 Contributing
 
