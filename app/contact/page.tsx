@@ -16,7 +16,8 @@ function ContactForm() {
     eventDate: "",
     guestCount: "",
     dietaryRestrictions: "",
-    message: ""
+    message: "",
+    website: "" // Honeypot: humans never see this field; bots fill it in
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -87,7 +88,8 @@ function ContactForm() {
             eventDate: "",
             guestCount: "",
             dietaryRestrictions: "",
-            message: ""
+            message: "",
+            website: ""
           });
         }, 5000);
       } else {
@@ -194,6 +196,19 @@ function ContactForm() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot field — hidden from humans, catches bots that fill every input */}
+              <div aria-hidden="true" className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden">
+                <label htmlFor="website">Website</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.website}
+                  onChange={handleChange}
+                />
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-[var(--baguette-dark)] mb-2">
@@ -288,6 +303,7 @@ function ContactForm() {
                     id="guestCount"
                     name="guestCount"
                     min="1"
+                    max="2000"
                     value={formData.guestCount}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-[var(--baguette-light)] rounded-lg focus:ring-2 focus:ring-[var(--baguette-primary)] focus:border-transparent transition-colors"

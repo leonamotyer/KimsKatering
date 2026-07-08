@@ -2,6 +2,86 @@ import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 import { EMAIL_CONFIG, EMAIL_TEMPLATES } from './email';
 
+const LIMITS = {
+  name: 100,
+  email: 254,
+  phone: 11,
+  eventType: 50,
+  message: 5000,
+  dietaryRestrictions: 2000,
+  maxGuests: 10000,
+  maxBudget: 1_000_000,
+  maxSelectedItems: 100,
+};
+
+// Returns an error message, or null if the input is acceptable.
+function validateInput(body: Record<string, unknown>): string | null {
+  const str = (v: unknown) => (typeof v === 'string' ? v.trim() : '');
+
+  const name = str(body.name);
+  const email = str(body.email);
+  const phone = str(body.phone);
+
+  if (name.length === 0 || name.length > LIMITS.name) {
+    return 'Please provide a valid name.';
+  }
+
+  // Simple sanity check, not full RFC 5322 — real validation happens when Resend delivers.
+  if (email.length > LIMITS.email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    return 'Please provide a valid email address.';
+  }
+
+  const phoneDigits = phone.replace(/\D/g, '');
+  if (phone.length > LIMITS.phone || phoneDigits.length < 7 || phoneDigits.length > 15) {
+    return 'Please provide a valid phone number.';
+  }
+
+  if (str(body.eventType).length > LIMITS.eventType) {
+    return 'Event type is invalid.';
+  }
+
+  if (str(body.message).length > LIMITS.message) {
+    return `Message is too long (maximum ${LIMITS.message} characters).`;
+  }
+
+  if (str(body.dietaryRestrictions).length > LIMITS.dietaryRestrictions) {
+    return `Dietary restrictions text is too long (maximum ${LIMITS.dietaryRestrictions} characters).`;
+  }
+
+  const guestCountRaw = str(body.guestCount);
+  if (guestCountRaw) {
+    const guests = Number(guestCountRaw);
+    if (!Number.isInteger(guests) || guests < 1 || guests > LIMITS.maxGuests) {
+      return `Guest count must be a whole number between 1 and ${LIMITS.maxGuests}.`;
+    }
+  }
+
+  const budgetRaw = str(body.eventBudget);
+  if (budgetRaw) {
+    const budget = Number(budgetRaw.replace(/[$,\s]/g, ''));
+    if (!Number.isFinite(budget) || budget < 0 || budget > LIMITS.maxBudget) {
+      return `Event budget must be a number between 0 and ${LIMITS.maxBudget.toLocaleString()}.`;
+    }
+  }
+
+  const eventDateRaw = str(body.eventDate);
+  if (eventDateRaw) {
+    const eventDate = new Date(eventDateRaw);
+    const now = new Date();
+    const twoYearsOut = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate());
+    const yesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+    if (isNaN(eventDate.getTime()) || eventDate < yesterday || eventDate > twoYearsOut) {
+      return 'Event date must be a valid date within the next two years.';
+    }
+  }
+
+  if (Array.isArray(body.selectedItems) && body.selectedItems.length > LIMITS.maxSelectedItems) {
+    return 'Too many menu items selected.';
+  }
+
+  return null;
+}
+
 export async function POST(request: NextRequest) {
   console.log('📧 Email API route called');
   
@@ -10,6 +90,22 @@ export async function POST(request: NextRequest) {
     console.log('📝 Request body received:', JSON.stringify(body, null, 2));
     
     const { name, email, phone, eventType, eventDate, guestCount, eventBudget, dietaryRestrictions, message, hasMenuSelections, selectedItems: requestSelectedItems } = body;
+
+    // Honeypot: hidden "website" field is invisible to humans; bots auto-fill it.
+    // Return fake success so bots can't tell they were caught.
+    if (typeof body.website === 'string' && body.website.trim().length > 0) {
+      console.log('🍯 Honeypot triggered — dropping submission silently');
+      return NextResponse.json(
+        { success: true, message: 'Email sent successfully' },
+        { status: 200 }
+      );
+    }
+
+    const validationError = validateInput(body);
+    if (validationError) {
+      console.log('❌ Validation failed:', validationError);
+      return NextResponse.json({ error: validationError }, { status: 400 });
+    }
     
     // Use selected items from request body, or parse from message as fallback
     let selectedItems: Array<{itemName: string, categoryName: string, itemPrice: string}> = [];
@@ -39,15 +135,6 @@ export async function POST(request: NextRequest) {
     
     console.log('🍽️ Has menu selections:', hasMenuSelections);
     console.log('📋 Selected items:', selectedItems);
-
-    // Validate required fields - only name, email, and phone are required
-    if (!name || !email || !phone) {
-      console.log('❌ Validation failed - missing required fields:', { name: !!name, email: !!email, phone: !!phone });
-      return NextResponse.json(
-        { error: 'Name, email, and phone number are required.' },
-        { status: 400 }
-      );
-    }
 
     // Validate that either message or selected items are provided
     const hasMessage = message && message.trim().length > 0;

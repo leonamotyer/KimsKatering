@@ -23,7 +23,8 @@ function CustomQuoteForm() {
     guestCount: '',
     eventBudget: '',
     dietaryRestrictions: '',
-    message: ''
+    message: '',
+    website: '' // Honeypot: humans never see this field; bots fill it in
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -142,7 +143,8 @@ function CustomQuoteForm() {
           guestCount: '',
           eventBudget: '',
           dietaryRestrictions: '',
-          message: ''
+          message: '',
+          website: ''
         });
         setSelectedItems([]);
       } else {
@@ -200,6 +202,19 @@ function CustomQuoteForm() {
               )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot field — hidden from humans, catches bots that fill every input */}
+                <div aria-hidden="true" className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={handleInputChange}
+                  />
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-[var(--foreground)] mb-2">
@@ -293,6 +308,7 @@ function CustomQuoteForm() {
                       value={formData.guestCount}
                       onChange={handleInputChange}
                       min="1"
+                      max="2000"
                       className="w-full px-4 py-2 border border-[var(--baguette-light)] rounded-md focus:ring-2 focus:ring-[var(--baguette-primary)] focus:border-transparent bg-[var(--background)] text-[var(--foreground)]"
                     />
                   </div>
