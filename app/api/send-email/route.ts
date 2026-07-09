@@ -5,7 +5,7 @@ import { EMAIL_CONFIG, EMAIL_TEMPLATES } from './email';
 const LIMITS = {
   name: 100,
   email: 254,
-  phone: 11,
+  phone: 15,
   eventType: 50,
   message: 5000,
   dietaryRestrictions: 2000,
