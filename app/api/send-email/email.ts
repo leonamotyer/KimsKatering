@@ -1,4 +1,42 @@
 // Email configuration and templates for Kim's Katering
+import fs from 'fs';
+import path from 'path';
+
+export const LOGO_CONTENT_ID = 'kims-katering-logo';
+
+function readLogoBuffer(): Buffer {
+  const logoPath = path.join(process.cwd(), 'public', 'logo.png');
+  return fs.readFileSync(logoPath);
+}
+
+export function getLogoAttachment() {
+  try {
+    return {
+      content: readLogoBuffer(),
+      filename: 'logo.png',
+      contentType: 'image/png',
+      contentId: LOGO_CONTENT_ID,
+    };
+  } catch (error) {
+    console.error('Failed to load logo for email attachment:', error);
+    return null;
+  }
+}
+
+export function getFallbackLogoSrc(): string {
+  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://kims-katering.vercel.app';
+  return `${base}/logo.png`;
+}
+
+export function getPreviewLogoSrc(origin?: string): string {
+  try {
+    const buffer = readLogoBuffer();
+    return `data:image/png;base64,${buffer.toString('base64')}`;
+  } catch {
+    return `${origin || 'http://localhost:3000'}/logo.png`;
+  }
+}
+
 export const EMAIL_CONFIG = {
   // Sender information
   fromEmail: process.env.FROM_EMAIL || 'onboarding@resend.dev', // Resend's verified domain
@@ -23,7 +61,7 @@ export const EMAIL_CONFIG = {
   companyPhone: '403-497-9338',
   website: 'kims-katering.vercel.app',
   websiteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kims-katering.vercel.app',
-  logoUrl: (process.env.NEXT_PUBLIC_SITE_URL || 'https://kims-katering.vercel.app') + '/logo.png'
+  logoUrl: `cid:${LOGO_CONTENT_ID}`,
 };
 
 // Email templates
@@ -41,6 +79,7 @@ export const EMAIL_TEMPLATES = {
     message: string;
     hasMenuSelections: boolean;
     selectedItems?: Array<{itemName: string, categoryName: string, itemPrice: string}>;
+    logoSrc?: string;
   }) => `
     <!DOCTYPE html>
     <html>
@@ -56,7 +95,7 @@ export const EMAIL_TEMPLATES = {
         <!-- Header -->
         <div style="background: linear-gradient(135deg, ${EMAIL_CONFIG.primaryColor} 0%, ${EMAIL_CONFIG.mediumColor} 100%); padding: 40px 30px; text-align: center; position: relative;">
           <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, ${EMAIL_CONFIG.accentColor}, ${EMAIL_CONFIG.lightColor}, ${EMAIL_CONFIG.accentColor});"></div>
-          <img src="${EMAIL_CONFIG.logoUrl}" alt="${EMAIL_CONFIG.companyName}" style="max-width: 120px; height: auto; margin: 0 auto 20px; display: block;" />
+          <img src="${data.logoSrc ?? EMAIL_CONFIG.logoUrl}" alt="${EMAIL_CONFIG.companyName}" style="max-width: 120px; height: auto; margin: 0 auto 20px; display: block;" />
           <div style="width: 60px; height: 2px; background-color: ${EMAIL_CONFIG.lightColor}; margin: 15px auto;"></div>
           <p style="color: white; margin: 0; font-size: 16px; font-weight: 300; opacity: 0.9;">
             ${data.hasMenuSelections ? 'Menu Quote Request' : 'New Katering Inquiry'}
@@ -234,6 +273,7 @@ export const EMAIL_TEMPLATES = {
     name: string; 
     hasMenuSelections?: boolean;
     selectedItems?: Array<{itemName: string, categoryName: string, itemPrice: string}>;
+    logoSrc?: string;
   }) => `
     <!DOCTYPE html>
     <html>
@@ -249,7 +289,7 @@ export const EMAIL_TEMPLATES = {
         <!-- Header -->
         <div style="background: linear-gradient(135deg, ${EMAIL_CONFIG.primaryColor} 0%, ${EMAIL_CONFIG.mediumColor} 100%); padding: 40px 30px; text-align: center; position: relative;">
           <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, ${EMAIL_CONFIG.accentColor}, ${EMAIL_CONFIG.lightColor}, ${EMAIL_CONFIG.accentColor});"></div>
-          <img src="${EMAIL_CONFIG.logoUrl}" alt="${EMAIL_CONFIG.companyName}" style="max-width: 120px; height: auto; margin: 0 auto 20px; display: block;" />
+          <img src="${data.logoSrc ?? EMAIL_CONFIG.logoUrl}" alt="${EMAIL_CONFIG.companyName}" style="max-width: 120px; height: auto; margin: 0 auto 20px; display: block;" />
           <div style="width: 60px; height: 2px; background-color: ${EMAIL_CONFIG.lightColor}; margin: 15px auto;"></div>
           <p style="color: white; margin: 0; font-size: 16px; font-weight: 300; opacity: 0.9;">
             Thank You for Your Inquiry!

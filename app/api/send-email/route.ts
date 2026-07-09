@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
-import { EMAIL_CONFIG, EMAIL_TEMPLATES } from './email';
+import { EMAIL_CONFIG, EMAIL_TEMPLATES, getFallbackLogoSrc, getLogoAttachment } from './email';
 
 const LIMITS = {
   name: 100,
@@ -31,9 +31,11 @@ function validateInput(body: Record<string, unknown>): string | null {
     return 'Please provide a valid email address.';
   }
 
-  const phoneDigits = phone.replace(/\D/g, '');
-  if (phone.length > LIMITS.phone || phoneDigits.length < 7 || phoneDigits.length > 15) {
-    return 'Please provide a valid phone number.';
+  if (phone.length > 0) {
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phone.length > LIMITS.phone || phoneDigits.length < 7 || phoneDigits.length > 15) {
+      return 'Please provide a valid phone number.';
+    }
   }
 
   if (str(body.eventType).length > LIMITS.eventType) {
@@ -132,23 +134,8 @@ export async function POST(request: NextRequest) {
         }
       }
     }
-    
-    console.log('🍽️ Has menu selections:', hasMenuSelections);
-    console.log('📋 Selected items:', selectedItems);
 
-    // Validate that either message or selected items are provided
-    const hasMessage = message && message.trim().length > 0;
-    const hasSelectedItems = hasMenuSelections && selectedItems.length > 0;
-    
-    if (!hasMessage && !hasSelectedItems) {
-      console.log('❌ Validation failed - no message or selected items:', { hasMessage, hasSelectedItems, selectedItemsCount: selectedItems.length });
-      return NextResponse.json(
-        { error: 'Please provide additional details about your event or select at least one menu item.' },
-        { status: 400 }
-      );
-    }
-
-    console.log('✅ Validation passed for:', { name, email, eventType, hasMessage, hasSelectedItems });
+    console.log('✅ Validation passed for:', { name, email, eventType });
 
     // Check Resend API key
     const apiKey = process.env.RESEND_API_KEY;
@@ -178,6 +165,9 @@ export async function POST(request: NextRequest) {
     console.log('📧 FROM_EMAIL env:', process.env.FROM_EMAIL || 'not set (using default)');
     console.log('📧 CONTACT_DEFAULT_TO env:', process.env.CONTACT_DEFAULT_TO || 'not set (using default)');
     
+    const logoAttachment = getLogoAttachment();
+    const logoSrc = logoAttachment ? undefined : getFallbackLogoSrc();
+
     const emailToKim = await resend.emails.send({
       from: `${EMAIL_CONFIG.fromName} <${EMAIL_CONFIG.fromEmail}>`,
       to: EMAIL_CONFIG.kimEmail,
@@ -193,8 +183,10 @@ export async function POST(request: NextRequest) {
         dietaryRestrictions,
         message: message || '',
         hasMenuSelections,
-        selectedItems
+        selectedItems,
+        logoSrc,
       }),
+      attachments: logoAttachment ? [logoAttachment] : undefined,
     });
 
     console.log('📧 Email to Kim result:', JSON.stringify(emailToKim, null, 2));
@@ -224,8 +216,10 @@ export async function POST(request: NextRequest) {
       html: EMAIL_TEMPLATES.confirmationEmail({
         name,
         hasMenuSelections,
-        selectedItems
+        selectedItems,
+        logoSrc,
       }),
+      attachments: logoAttachment ? [logoAttachment] : undefined,
     });
 
     console.log('📧 Confirmation email result:', confirmationResult);

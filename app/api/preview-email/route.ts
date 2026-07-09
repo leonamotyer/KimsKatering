@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { EMAIL_TEMPLATES } from '../send-email/email';
+import { EMAIL_TEMPLATES, getPreviewLogoSrc } from '../send-email/email';
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -43,9 +43,10 @@ export async function GET(request: NextRequest) {
   };
 
   try {
+    const logoSrc = getPreviewLogoSrc(request.nextUrl.origin);
     const html = type === 'inquiry' 
-      ? EMAIL_TEMPLATES.inquiryEmail(sampleInquiryData)
-      : EMAIL_TEMPLATES.confirmationEmail(sampleConfirmationData);
+      ? EMAIL_TEMPLATES.inquiryEmail({ ...sampleInquiryData, logoSrc })
+      : EMAIL_TEMPLATES.confirmationEmail({ ...sampleConfirmationData, logoSrc });
 
     return new NextResponse(html, {
       headers: {

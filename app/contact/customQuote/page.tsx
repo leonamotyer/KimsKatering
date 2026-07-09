@@ -2,7 +2,6 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import VictorianBorder from "../../componenets/victorian-animation";
 
 interface SelectedItem {
   categoryId: string;
@@ -107,14 +106,7 @@ function CustomQuoteForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Validate that either message or selected items are provided
-    if (!formData.message.trim() && selectedItems.length === 0) {
-      setSubmitStatus('error');
-      alert('Please provide additional details about your event or select at least one menu item.');
-      return;
-    }
-    
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -163,15 +155,14 @@ function CustomQuoteForm() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--background)]">
-      {/* Hero Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
+      <section className="px-4 pb-16 pt-24 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-6xl md:text-7xl font-light text-[var(--baguette-dark)] mb-8 tracking-tight">
+          <h1 className="mb-6 text-6xl text-[var(--foreground)] md:text-7xl">
             Custom Quote
           </h1>
-          <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-8"></div>
-          <p className="text-lg text-[var(--baguette-muted)] max-w-2xl mx-auto leading-relaxed">
+          <div className="ui-divider" aria-hidden="true"><span /></div>
+          <p className="text-lg text-[var(--muted-text)] max-w-2xl mx-auto leading-relaxed">
             Get a personalized quote for your selected menu items
           </p>
         </div>
@@ -180,8 +171,8 @@ function CustomQuoteForm() {
       <div className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Contact Form */}
-          <div className="bg-[var(--background)] rounded-lg shadow-lg border border-[var(--baguette-light)] p-6 mb-8">
-              <h2 className="text-2xl font-light text-[var(--baguette-dark)] mb-6">
+          <div className="ui-form-panel mb-8">
+              <h2 className="mb-6 text-2xl text-[var(--foreground)]">
                 Contact Information
               </h2>
 
@@ -368,13 +359,13 @@ function CustomQuoteForm() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 bg-[var(--baguette-dark)] text-[var(--background)] px-6 py-3 text-sm font-medium hover:bg-[var(--baguette-medium)] transition-colors tracking-wide uppercase rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 ui-btn-primary disabled:opacity-50 disabled:transform-none disabled:shadow-none"
                   >
                     {isSubmitting ? 'Sending...' : 'Request Quote'}
                   </button>
                   <a 
                     href="tel:403-497-9338" 
-                    className="border border-[var(--baguette-light)] text-[var(--baguette-dark)] px-6 py-3 text-sm font-medium hover:bg-[var(--baguette-subtle)] transition-colors tracking-wide uppercase rounded-md text-center"
+                    className="ui-btn-secondary text-center"
                   >
                     Call Kim: 403-497-9338
                   </a>
@@ -383,9 +374,9 @@ function CustomQuoteForm() {
           </div>
 
           {/* Selected Items Panel */}
-          <div className="bg-[var(--background)] rounded-lg shadow-lg border border-[var(--baguette-light)] p-6">
+          <div className="ui-form-panel">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-light text-[var(--baguette-dark)]">
+              <h2 className="text-2xl text-[var(--foreground)]">
                 Selected Items ({selectedItems.length})
               </h2>
               {selectedItems.length > 0 && (
@@ -403,7 +394,7 @@ function CustomQuoteForm() {
                 <p className="text-[var(--baguette-muted)] mb-4">No items selected</p>
                 <a 
                   href="/menu" 
-                  className="inline-block bg-[var(--baguette-dark)] text-[var(--background)] px-6 py-2 text-sm font-medium hover:bg-[var(--baguette-medium)] transition-colors rounded-md"
+                  className="ui-btn-primary !px-6 !py-2.5 !text-sm"
                 >
                   Browse Menu
                 </a>
@@ -421,7 +412,7 @@ function CustomQuoteForm() {
                   .map((item, index) => (
                   <div 
                     key={index} 
-                    className="flex items-start justify-between p-3 bg-[var(--baguette-subtle)] rounded-lg border border-[var(--baguette-light)]"
+                    className="flex items-start justify-between p-3 bg-[var(--baguette-subtle)] rounded-xl border border-[var(--baguette-primary)]/30"
                   >
                     <div className="flex-1 min-w-0">
                       <h4 className="font-medium text-[var(--foreground)] text-sm truncate">
@@ -448,9 +439,6 @@ function CustomQuoteForm() {
           </div>
         </div>
       </div>
-
-      {/* Victorian Page Border */}
-      <VictorianBorder />
     </div>
   );
 }

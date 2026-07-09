@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Metadata } from "next";
-import VictorianBorder from "./componenets/victorian-animation";
+import CurveDivider from "./componenets/curve-divider";
 
 export const metadata: Metadata = {
   title: "Kim's Katering - Premium Katering Services in Strathmore, Alberta",
@@ -26,83 +26,62 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* Full Screen Hero Image */}
-      <section className="relative h-screen w-full overflow-hidden" role="banner" aria-label="Kim's Katering Hero Section">
+    <main className="page-shell">
+      <section className="relative flex h-[92vh] w-full items-center justify-center overflow-hidden" role="banner" aria-label="Kim's Katering Hero Section">
         <Image
           src="/bread.jpg"
           alt="Fresh artisan bread and baked goods from Kim's Katering in Strathmore, Alberta"
           fill
-          className="object-cover"
+          className="scale-105 object-cover"
           priority
         />
-        
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/30" aria-hidden="true"></div>
-        
-        {/* Centered Content */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <header className="text-center text-white">
-            <h1 className="text-6xl md:text-8xl font-bold mb-6">
-              Kim&apos;s Katering
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-              Professional Katering services for weddings, corporate events, and special occasions in Strathmore, Alberta
-            </p>
-            <nav aria-label="Main navigation">
-              <a 
-                href="/menu" 
-                className="bg-white text-[var(--baguette-dark)] px-8 py-4 text-lg font-semibold hover:bg-[var(--baguette-subtle)] transition-colors inline-block"
-                aria-label="View our Katering menu"
-              >
-                View Menu
-              </a>
-            </nav>
-          </header>
-        </div>
-        
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#3c2e1f]/60 via-[#3c2e1f]/30 to-[var(--muted-warm)]" aria-hidden="true" />
+        <div className="relative z-10 px-6 text-center text-white">
+          <h1 className="mb-6 text-6xl drop-shadow-sm md:text-8xl">
+            Kim&apos;s Katering
+          </h1>
+          <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-white/90 md:text-2xl">
+            Professional Katering services for weddings, corporate events, and special occasions in Strathmore, Alberta
+          </p>
+          <nav aria-label="Main navigation">
+            <a
+              href="/menu"
+              className="ui-btn-white"
+              aria-label="View our Katering menu"
+            >
+              View Menu
+            </a>
+          </nav>
         </div>
       </section>
 
-      {/* Scrollable Content Below */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            
-            {/* Service 1 */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-[var(--baguette-subtle)] rounded-full mx-auto mb-6 flex items-center justify-center">
-                <i className="fi fi-rr-ring text-3xl text-[var(--baguette-muted)]"></i>
+      <section className="relative z-10 px-6 pb-24 pt-10">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="ui-card p-10 text-center">
+              <div className="ui-icon-circle mx-auto mb-6 h-20 w-20">
+                <i className="fi fi-rr-ring text-3xl text-[var(--baguette-dark)]"></i>
               </div>
-              <h3 className="text-2xl font-bold text-[var(--baguette-dark)] mb-4">Wedding Katering</h3>
-              <p className="text-[var(--baguette-muted)] leading-relaxed">
+              <h3 className="mb-4 text-2xl text-[var(--foreground)]">Wedding Katering</h3>
+              <p className="leading-relaxed text-[var(--muted-text)]">
                 Elegant and delicious meals for your special day. Custom menus tailored to your preferences.
               </p>
             </div>
-
-            {/* Service 2 */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-[var(--baguette-subtle)] rounded-full mx-auto mb-6 flex items-center justify-center">
-                <i className="fi fi-rr-building text-3xl text-[var(--baguette-muted)]"></i>
+            <div className="ui-card p-10 text-center">
+              <div className="ui-icon-circle mx-auto mb-6 h-20 w-20">
+                <i className="fi fi-rr-building text-3xl text-[var(--baguette-dark)]"></i>
               </div>
-              <h3 className="text-2xl font-bold text-[var(--baguette-dark)] mb-4">Corporate Events</h3>
-              <p className="text-[var(--baguette-muted)] leading-relaxed">
+              <h3 className="mb-4 text-2xl text-[var(--foreground)]">Corporate Events</h3>
+              <p className="leading-relaxed text-[var(--muted-text)]">
                 Professional Katering for business meetings, conferences, and corporate gatherings.
               </p>
             </div>
-
-            {/* Service 3 */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-[var(--baguette-subtle)] rounded-full mx-auto mb-6 flex items-center justify-center">
-                <i className="fi fi-rr-balloons text-3xl text-[var(--baguette-muted)]"></i>
+            <div className="ui-card p-10 text-center">
+              <div className="ui-icon-circle mx-auto mb-6 h-20 w-20">
+                <i className="fi fi-rr-balloons text-3xl text-[var(--baguette-dark)]"></i>
               </div>
-              <h3 className="text-2xl font-bold text-[var(--baguette-dark)] mb-4">Private Parties</h3>
-              <p className="text-[var(--baguette-muted)] leading-relaxed">
+              <h3 className="mb-4 text-2xl text-[var(--foreground)]">Private Parties</h3>
+              <p className="leading-relaxed text-[var(--muted-text)]">
                 Birthday parties, anniversaries, and special celebrations with personalized service.
               </p>
             </div>
@@ -110,54 +89,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-20 bg-[var(--baguette-subtle)]">
-        <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-4xl font-bold text-[var(--baguette-dark)] mb-8">About Kim&apos;s Katering</h2>
-          <p className="text-lg text-[var(--baguette-muted)] leading-relaxed mb-8">
+      <CurveDivider />
+
+      <section className="bg-[var(--baguette-subtle)] py-20">
+        <div className="mx-auto max-w-4xl px-8 text-center">
+          <h2 className="mb-8 text-4xl text-[var(--foreground)]">About Kim&apos;s Katering</h2>
+          <p className="mb-8 text-lg leading-relaxed text-[var(--muted-dark)]">
             Welcome to Kim&apos;s Katering, your friendly neighborhood bakery and Katering service! For the past 9 years, 
             Kim has been baking up love and delicious memories right here in Strathmore, Alberta at Bay #1 - 70 Slater Rd. 
             What started as a passion for homemade goodness has grown into a beloved local business that brings families together.
           </p>
-          <p className="text-lg text-[var(--baguette-muted)] leading-relaxed mb-8">
+          <p className="mb-8 text-lg leading-relaxed text-[var(--muted-dark)]">
             From intimate birthday celebrations to grand wedding receptions, Kim and her warm-hearted team have been 
             honored to be part of your most precious moments. Whether it&apos;s a cozy family reunion, a joyful fundraiser, 
             or a special home party, we believe every gathering deserves the comfort and joy that only homemade treats can bring.
           </p>
-          <p className="text-lg text-[var(--baguette-muted)] leading-relaxed mb-8">
+          <p className="mb-8 text-lg leading-relaxed text-[var(--muted-dark)]">
             Our kitchen is where magic happens! Every morning, Kim rolls up her sleeves and creates the most scrumptious 
             homemade pies, fresh-baked buns, delicate butter horns, and dreamy cakes using real cream and premium 
             Callebaut chocolate. It&apos;s not just food – it&apos;s love baked into every bite. Kim loves sitting down with you 
             to plan your special day, making sure every detail is just perfect for your guests.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
             <div>
-              <h4 className="text-2xl font-bold text-[var(--baguette-dark)] mb-2">9+</h4>
-              <p className="text-[var(--baguette-muted)]">Years of Love & Baking</p>
+              <h4 className="mb-2 text-2xl text-[var(--baguette-dark)]">9+</h4>
+              <p className="text-[var(--muted-text)]">Years of Love & Baking</p>
             </div>
             <div>
-              <h4 className="text-2xl font-bold text-[var(--baguette-dark)] mb-2">Made with</h4>
-              <p className="text-[var(--baguette-muted)]">Love & Real Ingredients</p>
+              <h4 className="mb-2 text-2xl text-[var(--baguette-dark)]">Made with</h4>
+              <p className="text-[var(--muted-text)]">Love & Real Ingredients</p>
             </div>
             <div>
-              <h4 className="text-2xl font-bold text-[var(--baguette-dark)] mb-2">Your</h4>
-              <p className="text-[var(--baguette-muted)]">Neighborhood Baker</p>
+              <h4 className="mb-2 text-2xl text-[var(--baguette-dark)]">Your</h4>
+              <p className="text-[var(--muted-text)]">Neighborhood Baker</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-4xl font-bold text-[var(--baguette-dark)] mb-8">Get In Touch</h2>
-          <p className="text-lg text-[var(--baguette-muted)] mb-8">
-            Ready to plan your next event? Contact us for a consultation and custom quote.
-          </p>
-          <div className="flex justify-center">
-            <a 
-              href="/contact" 
-              className="bg-[var(--baguette-dark)] text-white px-8 py-4 text-lg font-semibold hover:bg-[var(--baguette-medium)] transition-colors inline-block"
+      <CurveDivider flip />
+
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-4xl">
+          <div className="ui-cta-panel">
+            <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full border border-white/10" aria-hidden="true" />
+            <div className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full border border-white/10" aria-hidden="true" />
+            <h2 className="mb-4 text-4xl text-white">Get In Touch</h2>
+            <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/85">
+              Ready to plan your next event? Contact us for a consultation and custom quote.
+            </p>
+            <a
+              href="/contact"
+              className="ui-btn-white"
               aria-label="Contact us for katering services"
             >
               Contact Us
@@ -165,9 +148,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Victorian Page Border */}
-      <VictorianBorder />
     </main>
   );
 }

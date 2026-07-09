@@ -20,7 +20,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="sticky top-0 z-50 border-b border-[var(--muted-medium)] bg-white/95 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -44,7 +44,7 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-[var(--baguette-dark)] hover:text-[var(--baguette-primary)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                  className="rounded-full px-4 py-2 text-sm font-medium text-[var(--baguette-dark)] transition-colors duration-200 hover:bg-[var(--baguette-subtle)] hover:text-[var(--baguette-primary)]"
                 >
                   {item.name}
                 </Link>
@@ -103,7 +103,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-[var(--baguette-dark)] hover:text-[var(--baguette-primary)] block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                className="rounded-full px-3 py-2 text-base font-medium text-[var(--baguette-dark)] transition-colors duration-200 hover:bg-[var(--baguette-subtle)] hover:text-[var(--baguette-primary)]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

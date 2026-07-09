@@ -60,7 +60,7 @@ export default function SelectedItemsPopup({
     <div className="fixed top-20 left-4 z-50 transition-all duration-300">
       {/* Main Popup Container */}
       <div 
-        className={`bg-[var(--background)] rounded-lg shadow-lg border border-[var(--baguette-light)] transition-all duration-300 ${
+        className={`ui-card transition-all duration-300 ${
           isExpanded 
             ? screenSize === 'mobile' ? 'w-72' : 'w-80' 
             : 'w-16'
@@ -72,7 +72,7 @@ export default function SelectedItemsPopup({
       >
         {/* Header - Always Visible */}
         <div 
-          className={`bg-[var(--baguette-dark)] text-[var(--background)] p-3 rounded-t-lg flex items-center justify-between ${
+          className={`bg-[var(--baguette-dark)] text-white p-3 rounded-t-2xl flex items-center justify-between ${
             screenSize === 'mobile' ? 'cursor-pointer' : ''
           }`}
           onClick={() => {
@@ -121,7 +121,7 @@ export default function SelectedItemsPopup({
               {selectedItems.map((item, index) => (
                 <div 
                   key={index} 
-                  className="flex items-start justify-between p-3 bg-[var(--baguette-subtle)] rounded-lg border border-[var(--baguette-light)]"
+                  className="flex items-start justify-between p-3 bg-[var(--baguette-subtle)] rounded-xl border border-[var(--baguette-primary)]/30"
                 >
                   <div className="flex-1 min-w-0">
                     <h4 className="font-medium text-[var(--foreground)] text-sm truncate">
@@ -149,13 +149,13 @@ export default function SelectedItemsPopup({
             <div className="space-y-2">
               <button
                 onClick={onRequestQuote}
-                className="w-full bg-[var(--baguette-dark)] text-[var(--background)] px-4 py-2 text-sm font-medium hover:bg-[var(--baguette-medium)] transition-colors rounded-md"
+                className="w-full ui-btn-primary !px-4 !py-2 !text-sm !normal-case !tracking-normal rounded-full"
               >
                 Request Quote ({selectedItems.length} items)
               </button>
               <button
                 onClick={onClearAll}
-                className="w-full border border-[var(--baguette-light)] text-[var(--foreground)] px-4 py-2 text-sm font-medium hover:bg-[var(--baguette-subtle)] transition-colors rounded-md"
+                className="w-full ui-btn-secondary !px-4 !py-2 !text-sm !normal-case !tracking-normal rounded-full"
               >
                 Clear All
               </button>

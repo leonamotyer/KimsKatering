@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import eventsData from "../data/events.json";
-import VictorianBorder from "../componenets/victorian-animation";
 import SelectedItemsPopup from "../componenets/selected-items-popup";
 
 interface MenuItem {
@@ -64,15 +63,14 @@ export default function Events() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      {/* Hero Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
+      <section className="px-4 pb-16 pt-24 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-6xl md:text-7xl font-light text-[var(--baguette-dark)] mb-8 tracking-tight">
+          <h1 className="mb-6 text-6xl text-[var(--foreground)] md:text-7xl">
             Events
           </h1>
-          <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-8"></div>
-          <p className="text-lg text-[var(--baguette-muted)] max-w-2xl mx-auto leading-relaxed">
+          <div className="ui-divider" aria-hidden="true"><span /></div>
+          <p className="text-lg text-[var(--muted-text)] max-w-2xl mx-auto leading-relaxed">
             {eventsData.generalInfo.philosophy}
           </p>
         </div>
@@ -87,7 +85,7 @@ export default function Events() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-4">
                     <div className="w-6 h-6 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <svg width="16" height="16" viewBox="0 0 16 16" className="text-stone-400 group-hover:text-stone-500 transition-colors">
+                      <svg width="16" height="16" viewBox="0 0 16 16" className="text-[var(--baguette-medium)] group-hover:text-[var(--baguette-dark)] transition-colors">
                         {/* Outer diamond outline */}
                         <path d="M8 2 L14 8 L8 14 L2 8 Z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                         {/* Inner diamond */}
@@ -101,14 +99,14 @@ export default function Events() {
                         <circle cx="2" cy="8" r="0.8" fill="currentColor"/>
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-light text-[var(--baguette-dark)] group-hover:text-[var(--baguette-dark)] transition-colors">
+                    <h3 className="text-2xl text-[var(--foreground)]">
                       {event.name}
                     </h3>
                   </div>
                 </div>
                 
-                <div className="ml-16 pl-8 border-l border-[var(--baguette-light)]">
-                  <p className="text-[var(--baguette-muted)] leading-relaxed mb-6">
+                <div className="ml-16 pl-8 border-l border-[var(--baguette-primary)]/30">
+                  <p className="text-[var(--muted-text)] leading-relaxed mb-6">
                     {event.description}
                   </p>
                   
@@ -145,17 +143,17 @@ export default function Events() {
                       <p className="text-sm text-[var(--baguette-muted)] font-medium mb-3">Menu Options</p>
                       <div className="space-y-3">
                         {event.menus.map((menu, idx) => (
-                          <div key={idx} className="border border-[var(--baguette-light)] rounded-lg p-4">
+                          <div key={idx} className="ui-card p-5">
                             <div className="flex justify-between items-start mb-2">
                               <h4 className="text-sm font-medium text-[var(--baguette-dark)]">{menu.name}</h4>
                             </div>
                             <p className="text-sm text-[var(--baguette-muted)] mb-3">{menu.description}</p>
                             <button
                               onClick={() => toggleItemSelection(menu, event.name)}
-                              className={`w-full py-2 px-4 text-sm font-medium rounded transition-colors ${
+                              className={`w-full py-2 px-4 text-sm font-medium rounded-full transition-colors ${
                                 isItemSelected(menu)
                                   ? 'bg-[var(--baguette-dark)] text-white hover:bg-[var(--baguette-medium)]'
-                                  : 'bg-[var(--baguette-subtle)] text-[var(--baguette-dark)] hover:bg-[var(--baguette-light)] border border-[var(--baguette-light)]'
+                                  : 'bg-[var(--baguette-subtle)] text-[var(--baguette-dark)] hover:bg-[var(--baguette-light)] border border-[var(--baguette-primary)]/40'
                               }`}
                             >
                               {isItemSelected(menu) ? '✓ Selected' : 'Add to Custom Quote'}
@@ -172,28 +170,31 @@ export default function Events() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-[var(--baguette-light)]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-light text-[var(--baguette-dark)] mb-8">
-            Ready to Plan Your Event?
-          </h2>
-          <p className="text-lg text-[var(--baguette-muted)] mb-12 max-w-2xl mx-auto">
-            {eventsData.generalInfo.customization}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <a 
-              href="tel:403-497-9338" 
-              className="bg-[var(--baguette-dark)] text-white px-8 py-4 text-sm font-medium hover:bg-[var(--baguette-medium)] transition-colors tracking-wide uppercase"
-            >
-              Call Kim: 403-497-9338
-            </a>
-            <a 
-              href="/menu" 
-              className="border border-[var(--baguette-light)] text-[var(--baguette-dark)] px-8 py-4 text-sm font-medium hover:bg-[var(--baguette-subtle)] transition-colors tracking-wide uppercase"
-            >
-              View Menu
-            </a>
+      <section className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="ui-cta-panel">
+            <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full border border-white/10" aria-hidden="true" />
+            <div className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full border border-white/10" aria-hidden="true" />
+            <h2 className="mb-4 text-3xl text-white">
+              Ready to Plan Your Event?
+            </h2>
+            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/85">
+              {eventsData.generalInfo.customization}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="tel:403-497-9338" 
+                className="ui-btn-white"
+              >
+                Call Kim: 403-497-9338
+              </a>
+              <a 
+                href="/menu" 
+                className="ui-btn-outline-white"
+              >
+                View Menu
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -207,9 +208,6 @@ export default function Events() {
           onRequestQuote={handleQuoteRequest}
         />
       )}
-
-      {/* Victorian Page Border */}
-      <VictorianBorder />
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import VictorianBorder from "../componenets/victorian-animation";
+import CurveDivider from "../componenets/curve-divider";
 import { ObfuscatedContactEmail } from "../componenets/obfuscated-contact-email";
 
 function ContactForm() {
@@ -107,25 +107,25 @@ function ContactForm() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      {/* Hero Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
+    <div className="page-shell">
+      <section className="px-4 pb-16 pt-24 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-6xl md:text-7xl font-light text-[var(--baguette-dark)] mb-8 tracking-tight">
+          <h1 className="mb-6 text-6xl text-[var(--foreground)] md:text-7xl">
             Contact
           </h1>
-          <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-8"></div>
-          <p className="text-lg text-[var(--baguette-muted)] max-w-2xl mx-auto leading-relaxed">
+          <div className="ui-divider" aria-hidden="true"><span /></div>
+          <p className="text-lg text-[var(--muted-text)] max-w-2xl mx-auto leading-relaxed">
             Ready to plan your special event? Get in touch with Kim for personalized consultation and custom Katering.
           </p>
         </div>
       </section>
 
-      {/* Contact Information */}
+      <CurveDivider />
+
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--baguette-subtle)]">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-light text-[var(--baguette-dark)] mb-8">
+            <h2 className="mb-8 text-3xl text-[var(--foreground)]">
               Get In Touch
             </h2>
           </div>
@@ -135,13 +135,13 @@ function ContactForm() {
             <div className="text-center">
               <a 
                 href="tel:403-497-9338" 
-                className="w-16 h-16 bg-white rounded-full mx-auto mb-6 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                className="ui-icon-circle mx-auto mb-6 h-20 w-20 bg-white shadow-[0_8px_30px_rgba(107,93,79,0.12)] hover:-translate-y-1 cursor-pointer"
               >
-                <svg className="w-8 h-8 text-[var(--baguette-light)] hover:text-[var(--baguette-primary)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-[var(--baguette-dark)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </a>
-              <h3 className="text-xl font-medium text-[var(--baguette-dark)] mb-4">Call Kim Directly</h3>
+              <h3 className="mb-4 text-xl text-[var(--foreground)]">Call Kim Directly</h3>
               <a 
                 href="tel:403-497-9338" 
                 className="text-2xl font-light text-[var(--baguette-muted)] hover:text-[var(--baguette-dark)] transition-colors block mb-2"
@@ -155,12 +155,12 @@ function ContactForm() {
             <div className="text-center">
               <ObfuscatedContactEmail
                 betweenIconAndAddress={
-                  <h3 className="text-xl font-medium text-[var(--baguette-dark)] mb-4">Send an Email</h3>
+                  <h3 className="mb-4 text-xl text-[var(--foreground)]">Send an Email</h3>
                 }
-                iconWrapperClassName="w-16 h-16 bg-white rounded-full mx-auto mb-6 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                iconWrapperClassName="ui-icon-circle mx-auto mb-6 h-20 w-20 bg-white shadow-[0_8px_30px_rgba(107,93,79,0.12)] hover:-translate-y-1 cursor-pointer"
                 textLinkClassName="text-lg font-light text-[var(--baguette-muted)] hover:text-[var(--baguette-dark)] transition-colors block mb-2"
                 icon={
-                  <svg className="w-8 h-8 text-[var(--baguette-light)] hover:text-[var(--baguette-primary)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-8 h-8 text-[var(--baguette-dark)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 }
@@ -175,10 +175,10 @@ function ContactForm() {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-light text-[var(--baguette-dark)] mb-4">
+            <h2 className="mb-4 text-3xl text-[var(--foreground)]">
               Request a Quote
             </h2>
-            <p className="text-[var(--baguette-muted)]">
+            <p className="text-[var(--muted-text)]">
               Tell us about your event and we&apos;ll create a custom Katering plan just for you.
             </p>
           </div>
@@ -195,7 +195,7 @@ function ContactForm() {
               <p className="text-sm text-[var(--baguette-muted)]">You should also receive a confirmation email shortly.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="ui-form-panel space-y-6">
               {/* Honeypot field — hidden from humans, catches bots that fill every input */}
               <div aria-hidden="true" className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden">
                 <label htmlFor="website">Website</label>
@@ -346,7 +346,7 @@ function ContactForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-[var(--baguette-dark)] text-white px-8 py-4 text-sm font-medium hover:bg-[var(--baguette-medium)] disabled:bg-[var(--baguette-light)] transition-colors tracking-wide uppercase"
+                  className="ui-btn-primary disabled:opacity-50 disabled:transform-none disabled:shadow-none"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
@@ -356,28 +356,28 @@ function ContactForm() {
         </div>
       </section>
 
-      {/* Additional Information */}
+      <CurveDivider />
+
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--baguette-subtle)]">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-              <h3 className="text-lg font-medium text-[var(--baguette-dark)] mb-2">Response Time</h3>
-              <p className="text-[var(--baguette-muted)]">We typically respond within 24 hours</p>
+              <h3 className="mb-2 text-lg text-[var(--foreground)]">Response Time</h3>
+              <p className="text-[var(--muted-text)]">We typically respond within 24 hours</p>
             </div>
             <div>
-              <h3 className="text-lg font-medium text-[var(--baguette-dark)] mb-2">Free Consultation</h3>
-              <p className="text-[var(--baguette-muted)]">Complimentary event planning consultation</p>
+              <h3 className="mb-2 text-lg text-[var(--foreground)]">Free Consultation</h3>
+              <p className="text-[var(--muted-text)]">Complimentary event planning consultation</p>
             </div>
             <div>
-              <h3 className="text-lg font-medium text-[var(--baguette-dark)] mb-2">Custom Menus</h3>
-              <p className="text-[var(--baguette-muted)]">Personalized Katering for your special day</p>
+              <h3 className="mb-2 text-lg text-[var(--foreground)]">Custom Menus</h3>
+              <p className="text-[var(--muted-text)]">Personalized Katering for your special day</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Victorian Page Border */}
-      <VictorianBorder />
+      <CurveDivider flip />
     </div>
   );
 }
